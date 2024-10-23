@@ -1,6 +1,7 @@
-import cx from '@/utils/cx';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
+
+import cx from '@/utils/cx';
 
 import { NavProps } from '../Nav';
 import { NavItem } from './NavItem';

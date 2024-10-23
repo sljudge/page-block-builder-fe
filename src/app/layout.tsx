@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Clifford Solutions",
-  description: "Event planning based in White Parish",
+  title: 'Clifford Solutions',
+  description: 'Event planning based in White Parish'
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
