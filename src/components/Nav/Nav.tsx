@@ -28,7 +28,7 @@ export const Nav = ({ logo, links }: NavProps) => {
         colorScheme === 'primary' ? 'bg-secondary/95' : 'bg-invert/60'
       )}
     >
-      <Image {...logo} className="w-[40px]" />
+      <Image {...logo} width={40} height={40} />
       <NavLinksDesktop links={links} colorScheme={colorScheme} />
       <NavLinksMobile links={links} />
     </nav>

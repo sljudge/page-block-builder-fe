@@ -1,13 +1,29 @@
+import { createDirectus, readItems, readSingleton, rest } from '@directus/sdk';
+import { z } from 'zod';
+
 import Console from '@/utils/Console';
 import toPascalCase from '@/utils/toPascalCase';
-import { createDirectus, readItems, rest } from '@directus/sdk';
-import { z } from 'zod';
 
 // Initialize the SDK.
 const directus = createDirectus(process.env.DIRECTUS_URL!).with(rest());
 
-/** Page Sections ******************************************************/
+/** Logo ******************************************************/
+const LogoResponseSchema = z.object({ id: z.number(), src: z.string(), alt: z.string() });
 
+export async function getLogo(): Promise<z.infer<typeof LogoResponseSchema>> {
+  try {
+    const response = await directus.request(readSingleton('logo'));
+    return LogoResponseSchema.parse({
+      ...response,
+      src: `${process.env.ASSETS_URL}/${response.src}`
+    });
+  } catch (error) {
+    Console.error('Error fetching logo: \n' + error);
+    throw error;
+  }
+}
+
+/** Page Sections ******************************************************/
 const PageSectionResponseSchema = z.array(
   z.object({ id: z.number(), sort: z.number(), label: z.string() })
 );
