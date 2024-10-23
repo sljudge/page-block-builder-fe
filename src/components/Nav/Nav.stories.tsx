@@ -29,8 +29,9 @@ export const Default = () => {
       <div>
         {PAGE_LINKS.map(({ label, href }, i) => (
           <div
+            key={href}
             id={href}
-            className="py-md text-display-md text-invert"
+            className="py-xxxl text-display-md text-invert"
             style={{
               height: `${genNumInRange(300, 1000)}px`,
               backgroundColor: i % 2 === 0 ? BACKGROUND_COLORS.cta : BACKGROUND_COLORS.invert

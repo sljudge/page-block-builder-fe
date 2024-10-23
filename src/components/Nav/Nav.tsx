@@ -1,8 +1,13 @@
 import Image, { type ImageProps } from 'next/image';
 
-import { OUTLINE_WIDTHS } from '@/../tailwind.config';
+import cx from '@/utils/cx';
+
+import { NavLinksDesktop, NavLinksMobile } from './components';
+import { useNavColorScheme } from './hooks';
 
 export type NavLink = { label: string; href: string };
+
+export type NavColorScheme = 'primary' | 'invert';
 
 export type NavProps = {
   logo: {
@@ -13,34 +18,17 @@ export type NavProps = {
 };
 
 export const Nav = ({ logo, links }: NavProps) => {
+  const colorScheme = useNavColorScheme();
   return (
-    <nav className="flex items-center bg-secondary text-cta">
-      <Image {...logo} className="ml-lg w-[40px]" />
-      <ul className="container mx-auto flex justify-end gap-x-lg px-md text-display-xs font-extralight">
-        {links.map((section) => (
-          <NavItem {...section} />
-        ))}
-      </ul>
-    </nav>
-  );
-};
-
-const NavItem = ({ label, href }: NavLink) => {
-  return (
-    <li
-      key={`page-nav-item-${href}`}
-      className="group relative cursor-pointer py-sm"
-      onClick={() => (window.location.hash = href)}
+    <nav
+      className={cx(
+        'top-0 left-0 right-0 fixed flex h-[66px] items-center justify-between px-md transition-all duration-200',
+        colorScheme === 'primary' ? 'bg-secondary/95' : 'bg-invert/60'
+      )}
     >
-      <a href={`#${href}`} className="opacity-85 transition-all group-hover:opacity-100">
-        {label}
-      </a>
-      <div className="left-0 right-0 bottom-0 absolute">
-        <div
-          className="w-0 mt-xs bg-invert/60 transition-all duration-200 group-hover:w-full"
-          style={{ height: OUTLINE_WIDTHS.lg }}
-        />
-      </div>
-    </li>
+      <Image {...logo} className="w-[40px]" />
+      <NavLinksDesktop links={links} colorScheme={colorScheme} />
+      <NavLinksMobile links={links} />
+    </nav>
   );
 };
