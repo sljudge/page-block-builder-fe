@@ -1,0 +1,18 @@
+.husky
+.prettierignore
+.gitignore
+.eslintrc
+.eslintignore
+yarn.lock
+*.png
+*.jpg
+*.jpeg
+*.svg
+dist
+.env
+.env Mutual
+.env UCITS
+.env.local
+.env.example
+*.toml
+public
