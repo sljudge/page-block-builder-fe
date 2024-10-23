@@ -1,18 +1,18 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 /*****************************************
  * VARS
  *****************************************/
 
 export const COLORS = {
-  blue: "#6C9A8B",
-  coral: "#E8998D",
-  pink: "#EED2CC",
-  white: "#FBF7F4",
-  brown: "#362312",
-  black: "#111810",
-  red: "#C21807",
-  orange: "#AA4C02",
+  blue: '#639383',
+  coral: '#E8998D',
+  pink: '#FCF1EF',
+  white: '#FBF7F4',
+  brown: '#362312',
+  black: '#111810',
+  red: '#C21807',
+  orange: '#AA4C02'
 };
 
 export const BACKGROUND_COLORS = {
@@ -21,7 +21,7 @@ export const BACKGROUND_COLORS = {
   invert: COLORS.brown,
   cta: COLORS.blue,
   highlight: COLORS.orange,
-  negative: COLORS.red,
+  negative: COLORS.red
 };
 
 export const TEXT_COLORS = {
@@ -30,7 +30,7 @@ export const TEXT_COLORS = {
   invert: COLORS.white,
   negative: COLORS.red,
   cta: COLORS.blue,
-  highlight: COLORS.orange,
+  highlight: COLORS.orange
 };
 
 export const OUTLINE_COLORS = {
@@ -38,61 +38,61 @@ export const OUTLINE_COLORS = {
   secondary: COLORS.black,
   invert: COLORS.white,
   cta: COLORS.blue,
-  "cta-secondary": COLORS.coral,
+  'cta-secondary': COLORS.coral,
   highlight: COLORS.orange,
-  transparent: "rgba(0,0,0,0)",
-  negative: COLORS.red,
+  transparent: 'rgba(0,0,0,0)',
+  negative: COLORS.red
 };
 
 export const OUTLINE_WIDTHS = {
-  lg: "4px",
-  md: "2px",
-  sm: "1px",
-  none: "0px",
+  lg: '4px',
+  md: '2px',
+  sm: '1px',
+  0: '0px'
 };
 
 export const BORDER_RADIUS = {
-  full: "120px",
-  lg: "16px",
-  md: "12px",
-  sm: "8px",
-  xs: "4px",
-  none: "0px",
+  full: '120px',
+  lg: '16px',
+  md: '12px',
+  sm: '8px',
+  xs: '4px',
+  0: '0px'
 };
 
 export const SPACING = {
-  xxxl: "80px",
-  xxl: "64px",
-  xl: "40px",
-  lg: "32px",
-  md: "24px",
-  sm: "16px",
-  xs: "8px",
-  xxs: "4px",
-  none: "0px",
+  xxxl: '80px',
+  xxl: '64px',
+  xl: '40px',
+  lg: '32px',
+  md: '24px',
+  sm: '16px',
+  xs: '8px',
+  xxs: '4px',
+  0: '0px'
 };
 
 export const TYPOGRAPHY = {
   display: {
-    xxl: ["90px", { letterSpacing: "-0.03em", lineHeight: "1.2em" }],
-    xl: ["68px", { letterSpacing: "-0.03em", lineHeight: "1.2em" }],
-    lg: ["50px", { letterSpacing: "-0.03em", lineHeight: "1.2em" }],
-    md: ["38px", { letterSpacing: "-0.03em", lineHeight: "1.2em" }],
-    sm: ["28px", { letterSpacing: "-0.03em", lineHeight: "1.2em" }],
-    xs: ["22px", { letterSpacing: "-0.03em", lineHeight: "1.2em" }],
+    xxl: ['90px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
+    xl: ['68px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
+    lg: ['50px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
+    md: ['38px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
+    sm: ['28px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
+    xs: ['22px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }]
   },
   title: {
-    lg: ["38px", { letterSpacing: "-0.01em", lineHeight: "1.4em" }],
-    md: ["28px", { letterSpacing: "-0.01em", lineHeight: "1.4em" }],
-    sm: ["22px", { letterSpacing: "-0.01em", lineHeight: "1.4em" }],
-    xs: ["20px", { letterSpacing: "-0.01em", lineHeight: "1.4em" }],
+    lg: ['38px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }],
+    md: ['28px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }],
+    sm: ['22px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }],
+    xs: ['20px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }]
   },
   body: {
-    lg: ["16px", { letterSpacing: "0.03em", lineHeight: "1.6em" }],
-    md: ["14px", { letterSpacing: "0.03em", lineHeight: "1.6em" }],
-    sm: ["12px", { letterSpacing: "0.03em", lineHeight: "1.6em" }],
-    xs: ["10px", { letterSpacing: "0.03em", lineHeight: "1.6em" }],
-  },
+    lg: ['16px', { letterSpacing: '0.03em', lineHeight: '1.6em' }],
+    md: ['14px', { letterSpacing: '0.03em', lineHeight: '1.6em' }],
+    sm: ['12px', { letterSpacing: '0.03em', lineHeight: '1.6em' }],
+    xs: ['10px', { letterSpacing: '0.03em', lineHeight: '1.6em' }]
+  }
 };
 
 /*****************************************
@@ -105,7 +105,7 @@ function fromNested<T extends Record<string, any>>(dict: Record<string, T>) {
       const subDict = dict[typeKey as keyof typeof TYPOGRAPHY];
       return Object.keys(subDict).map((valKey) => [
         `${typeKey}-${valKey}`,
-        subDict[valKey as keyof typeof subDict],
+        subDict[valKey as keyof typeof subDict]
       ]);
     })
   ) as T;
@@ -117,9 +117,9 @@ function fromNested<T extends Record<string, any>>(dict: Record<string, T>) {
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     colors: COLORS,
@@ -132,8 +132,8 @@ const config: Config = {
     outlineWidth: OUTLINE_WIDTHS,
     borderRadius: BORDER_RADIUS,
     spacing: SPACING,
-    fontSize: fromNested<Config["fontSize"]>(TYPOGRAPHY),
+    fontSize: fromNested<Config['fontSize']>(TYPOGRAPHY)
   },
-  plugins: [],
+  plugins: []
 };
 export default config;
