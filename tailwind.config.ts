@@ -99,7 +99,7 @@ export const TYPOGRAPHY = {
  * UTILS
  *****************************************/
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-function fromNested<T extends Record<string, any>>(dict: Record<string, T>) {
+export function fromNested<T extends Record<string, any>>(dict: Record<string, T>) {
   return Object.fromEntries(
     Object.keys(dict).flatMap((typeKey) => {
       const subDict = dict[typeKey as keyof typeof TYPOGRAPHY];
