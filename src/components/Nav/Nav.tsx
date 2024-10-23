@@ -1,5 +1,6 @@
 import Image, { type ImageProps } from 'next/image';
-import { OUTLINE_WIDTHS } from '../../../tailwind.config';
+
+import { OUTLINE_WIDTHS } from '@/../tailwind.config';
 
 export type NavLink = { label: string; href: string };
 

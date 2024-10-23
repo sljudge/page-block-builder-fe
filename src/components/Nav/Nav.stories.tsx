@@ -1,9 +1,9 @@
 import type { Meta } from '@storybook/react';
 
+import { BACKGROUND_COLORS } from '@/../tailwind.config';
 import Logo from '@/app/favicon.ico';
 import genNumInRange from '@/utils/genNumInRange';
 
-import { BACKGROUND_COLORS } from '../../../tailwind.config';
 import { Nav } from './Nav';
 
 export default {
