@@ -46,7 +46,6 @@ const HeroResponseSchema = z.object({
 export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
   try {
     const response = await directus.request(readSingleton('hero'));
-    console.log('%csrc/services/directus.ts:41 response', 'color: #007acc;', response);
     return HeroResponseSchema.parse({
       ...response,
       image: `${process.env.ASSETS_URL}/${response.image}`
