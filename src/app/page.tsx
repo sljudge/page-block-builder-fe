@@ -17,7 +17,13 @@ export default async function Home() {
         />
       </header>
       <main className="">
-        <Hero header={hero.header} imgSrc={hero.image} text={hero.text} />
+        <Hero
+          header={hero.header}
+          imgSrc={hero.image}
+          text={hero.text}
+          alignX={hero.align_x}
+          alignY={hero.align_y}
+        />
       </main>
     </>
   );
