@@ -3,11 +3,13 @@ import { useState } from 'react';
 
 import cx from '@/utils/cx';
 
+import useDisableBodyScroll from '@/hooks/useDisableBodyScroll';
 import { NavProps } from '../Nav';
 import { NavItem } from './NavItem';
 
 export const NavLinksMobile = ({ links }: Pick<NavProps, 'links'>) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
+  useDisableBodyScroll(sideBarOpen);
   return (
     <>
       <button
