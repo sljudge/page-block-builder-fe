@@ -19,12 +19,12 @@ export const NavLinksMobile = ({ links }: Pick<NavProps, 'links'>) => {
         <Bars3Icon height={24} width={24} />
       </button>
       <div
-        className={cx('hidden', sideBarOpen && 'inset-0 fixed z-40 block bg-invert/50')}
+        className={cx('hidden', sideBarOpen && 'fixed inset-0 z-40 block bg-invert/50')}
         onClick={() => setSideBarOpen(false)}
       />
       <div
         className={cx(
-          'right-0 top-0 bottom-0 w-0 fixed z-50 overflow-hidden bg-primary transition-[width] duration-300',
+          'fixed bottom-0 right-0 top-0 z-50 w-0 overflow-hidden bg-primary transition-[width] duration-300',
           sideBarOpen && 'w-[75vw]'
         )}
       >
@@ -39,7 +39,7 @@ export const NavLinksMobile = ({ links }: Pick<NavProps, 'links'>) => {
             <XMarkIcon height={50} width={50} />
           </button>
         </div>
-        <ul className="flex flex-col gap-y-md p-md text-display-sm">
+        <ul className="flex flex-col gap-y-md p-md text-title-md">
           {links.map((section) => (
             <NavItem
               key={`nav-link-mobile-${section.href}`}

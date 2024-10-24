@@ -12,7 +12,7 @@ export const NavItem = ({ label, href, colorScheme = 'primary', onClick }: NavIt
       className="group relative cursor-pointer py-sm"
       onClick={() => {
         window.location.hash = href;
-        onClick && onClick();
+        if (onClick) onClick();
       }}
     >
       <a
@@ -24,11 +24,11 @@ export const NavItem = ({ label, href, colorScheme = 'primary', onClick }: NavIt
       >
         {label}
       </a>
-      <div className="left-0 right-0 bottom-0 absolute">
+      <div className="absolute bottom-0 left-0 right-0">
         <div
           className={cx(
-            'w-0 mt-xs transition-all duration-200 group-hover:w-full',
-            colorScheme === 'primary' ? 'bg-invert/60' : 'bg-primary/60'
+            'mt-xs w-0 transition-all duration-200 group-hover:w-full',
+            colorScheme === 'primary' ? 'bg-invert/60' : 'bg-secondary/60'
           )}
           style={{ height: OUTLINE_WIDTHS.lg }}
         />

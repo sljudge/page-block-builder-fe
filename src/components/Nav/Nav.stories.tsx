@@ -22,25 +22,27 @@ const PAGE_LINKS = [
   { label: 'Contact', href: 'contact' }
 ];
 
-export const Default = () => {
+export const Default = ({ withMockSections = true }: { withMockSections?: boolean }) => {
   return (
     <>
-      <Nav logo={{ src: Logo, alt: 'Logo' }} links={PAGE_LINKS} />
-      <div>
-        {PAGE_LINKS.map(({ label, href }, i) => (
-          <div
-            key={href}
-            id={href}
-            className="py-xxxl text-display-md text-invert"
-            style={{
-              height: `${genNumInRange(300, 1000)}px`,
-              backgroundColor: i % 2 === 0 ? BACKGROUND_COLORS.cta : BACKGROUND_COLORS.invert
-            }}
-          >
-            {label}
-          </div>
-        ))}
-      </div>
+      <Nav header="Clifford Solutions" logo={{ src: Logo, alt: 'Logo' }} links={PAGE_LINKS} />
+      {withMockSections && (
+        <div>
+          {PAGE_LINKS.map(({ label, href }, i) => (
+            <div
+              key={href}
+              id={href}
+              className="py-xxxl text-display-md text-invert"
+              style={{
+                height: `${genNumInRange(300, 1000)}px`,
+                backgroundColor: i % 2 === 0 ? BACKGROUND_COLORS.cta : BACKGROUND_COLORS.invert
+              }}
+            >
+              {label}
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
