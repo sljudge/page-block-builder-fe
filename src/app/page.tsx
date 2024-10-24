@@ -1,16 +1,24 @@
+import Hero from '@/components/Hero';
 import Nav from '@/components/Nav';
-import { getLogo, getPageSections } from '@/services/directus';
+import { getCompanyInformation, getHero, getPageSections } from '@/services/directus';
 
 export default async function Home() {
-  const logo = await getLogo();
+  const hero = await getHero();
   const pageSections = await getPageSections();
+  const companyInfo = await getCompanyInformation();
 
   return (
     <>
       <header>
-        <Nav logo={logo} links={pageSections} />
+        <Nav
+          header={companyInfo.name}
+          logo={{ src: companyInfo.logo, alt: companyInfo.name }}
+          links={pageSections}
+        />
       </header>
-      <main className=""></main>
+      <main className="">
+        <Hero header={hero.header} imgSrc={hero.image} text={hero.text} />
+      </main>
     </>
   );
 }

@@ -7,15 +7,23 @@ import toPascalCase from '@/utils/toPascalCase';
 // Initialize the SDK.
 const directus = createDirectus(process.env.DIRECTUS_URL!).with(rest());
 
-/** Logo ******************************************************/
-const LogoResponseSchema = z.object({ id: z.number(), src: z.string(), alt: z.string() });
+/**************************************************************
+ *  Company Information
+ * ************************************************************/
+const CompanyInformationResponseSchema = z.object({
+  id: z.number(),
+  logo: z.string(),
+  name: z.string()
+});
 
-export async function getLogo(): Promise<z.infer<typeof LogoResponseSchema>> {
+export async function getCompanyInformation(): Promise<
+  z.infer<typeof CompanyInformationResponseSchema>
+> {
   try {
-    const response = await directus.request(readSingleton('logo'));
-    return LogoResponseSchema.parse({
+    const response = await directus.request(readSingleton('company_information'));
+    return CompanyInformationResponseSchema.parse({
       ...response,
-      src: `${process.env.ASSETS_URL}/${response.src}`
+      logo: `${process.env.ASSETS_URL}/${response.logo}`
     });
   } catch (error) {
     Console.error('Error fetching logo: \n' + error);
@@ -23,7 +31,33 @@ export async function getLogo(): Promise<z.infer<typeof LogoResponseSchema>> {
   }
 }
 
-/** Page Sections ******************************************************/
+/**************************************************************
+ *  Hero
+ * ************************************************************/
+const HeroResponseSchema = z.object({
+  id: z.number(),
+  image: z.string(),
+  header: z.string(),
+  text: z.string()
+});
+
+export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
+  try {
+    const response = await directus.request(readSingleton('hero'));
+    // console.log('%csrc/services/directus.ts:41 response', 'color: #007acc;', response);
+    return HeroResponseSchema.parse({
+      ...response,
+      image: `${process.env.ASSETS_URL}/${response.image}`
+    });
+  } catch (error) {
+    Console.error('Error fetching logo: \n' + error);
+    throw error;
+  }
+}
+
+/**************************************************************
+ *  Page sections
+ * ************************************************************/
 const PageSectionResponseSchema = z.array(
   z.object({ id: z.number(), sort: z.number(), label: z.string() })
 );

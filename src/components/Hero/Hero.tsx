@@ -13,8 +13,8 @@ export const Hero = ({
   header,
   imgSrc,
   text,
-  alignX,
-  alignY,
+  alignX = 'right',
+  alignY = 'center',
   colorScheme = 'primary'
 }: HeroProps) => {
   return (
