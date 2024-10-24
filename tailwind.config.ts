@@ -9,7 +9,7 @@ export const COLORS = {
   coral: '#E8998D',
   pink: '#FCF1EF',
   white: '#FBF7F4',
-  brown: '#362312',
+  brown: '#3A1F04',
   black: '#111810',
   red: '#C21807',
   orange: '#AA4C02'
@@ -73,21 +73,16 @@ export const SPACING = {
 };
 
 export const TYPOGRAPHY = {
-  display: {
+  title: {
     xxl: ['90px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
     xl: ['68px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
-    lg: ['50px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
-    md: ['38px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
-    sm: ['28px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
-    xs: ['22px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }]
-  },
-  title: {
     lg: ['38px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }],
     md: ['28px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }],
     sm: ['22px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }],
     xs: ['20px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }]
   },
   body: {
+    xl: ['18px', { letterSpacing: '0.03em', lineHeight: '1.6em' }],
     lg: ['16px', { letterSpacing: '0.03em', lineHeight: '1.6em' }],
     md: ['14px', { letterSpacing: '0.03em', lineHeight: '1.6em' }],
     sm: ['12px', { letterSpacing: '0.03em', lineHeight: '1.6em' }],
