@@ -1,5 +1,7 @@
 import cx from '@/utils/cx';
 
+import { ArrowScrollCTA } from './components';
+
 export type HeroProps = {
   imgSrc: string;
   header: string;
@@ -20,32 +22,32 @@ export const Hero = ({
   return (
     <div
       style={{ backgroundImage: `url('${imgSrc}')` }}
-      className={cx(
-        'flex h-[50vh] bg-secondary bg-cover bg-center bg-no-repeat py-xl sm:h-[75vh]',
-        {
-          'justify-start': alignX === 'left',
-          'justify-center': alignX === 'center',
-          'justify-end': alignX === 'right',
-          'items-start': alignY === 'top',
-          'items-center': alignY === 'center',
-          'items-end': alignY === 'bottom'
-        }
-      )}
+      className={cx('flex h-[100vh] bg-secondary bg-cover bg-center bg-no-repeat py-xl', {
+        'justify-start': alignX === 'left',
+        'justify-center': alignX === 'center',
+        'justify-end': alignX === 'right',
+        'items-start': alignY === 'top',
+        'items-center': alignY === 'center',
+        'items-end': alignY === 'bottom'
+      })}
     >
       <div
-        className={cx('hidden p-xl sm:block md:p-xxl', {
+        className={cx('container block max-w-[1100px] py-xl', {
           'bg-primary/90 text-primary': colorScheme === 'primary',
           'bg-secondary/90 text-secondary': colorScheme === 'secondary',
           'bg-invert/90 text-invert': colorScheme === 'invert'
         })}
       >
-        <h1 className="md:text-title-xxl sm:text-title-xl leading-tight">{header}</h1>
+        <h1 className="md:text-title-xxl text-title-xl leading-tight">{header}</h1>
         {text && (
           <div
             dangerouslySetInnerHTML={{ __html: text }}
-            className="hidden text-body-lg leading-relaxed md:block md:text-title-xs"
+            className="pt-md text-body-md leading-relaxed sm:text-body-lg md:text-title-xs"
           />
         )}
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-xl md:hidden">
+        <ArrowScrollCTA />
       </div>
     </div>
   );
