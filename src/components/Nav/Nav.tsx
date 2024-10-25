@@ -2,10 +2,10 @@
 
 import Image, { type ImageProps } from 'next/image';
 
+import { useScrollDirection } from '@/hooks/useScrollDirection';
 import cx from '@/utils/cx';
 
 import { NavLinksDesktop, NavLinksMobile } from './components';
-import { useNavColorScheme } from './hooks';
 
 export type NavLink = { label: string; href: string };
 
@@ -21,27 +21,32 @@ export type NavProps = {
 };
 
 export const Nav = ({ logo, header, links }: NavProps) => {
-  const colorScheme = useNavColorScheme();
+  const scrollDirection = useScrollDirection(250);
+  const colorScheme = scrollDirection === 'down' ? 'primary' : 'invert';
   return (
     <nav
       className={cx(
-        'fixed left-0 right-0 top-0 flex h-[66px] items-center justify-between px-md transition-all duration-200',
-        colorScheme === 'primary' ? 'bg-secondary/95' : 'bg-invert/75'
+        'fixed left-0 right-0 top-0 z-50 transition-all duration-200',
+        colorScheme === 'primary' ? 'bg-secondary/95' : 'bg-invert/50'
       )}
     >
-      <div className="flex items-center gap-x-md">
-        <Image src={logo.src} width={40} height={40} alt={logo.alt} />
-        <div
-          className={cx(
-            'w-max whitespace-nowrap text-title-sm sm:hidden',
-            colorScheme === 'primary' ? 'text-primary' : 'text-invert'
+      <div className="container mx-auto flex h-[66px] items-center justify-between md:pr-0">
+        <div className="flex items-center gap-x-md">
+          <Image src={logo.src} width={40} height={40} alt={logo.alt} />
+          {scrollDirection === 'down' && (
+            <div
+              className={cx(
+                'w-max whitespace-nowrap text-title-sm',
+                colorScheme === 'primary' ? 'text-primary' : 'text-invert'
+              )}
+            >
+              {header}
+            </div>
           )}
-        >
-          {header}
         </div>
+        <NavLinksDesktop links={links} colorScheme={colorScheme} />
+        <NavLinksMobile links={links} />
       </div>
-      <NavLinksDesktop links={links} colorScheme={colorScheme} />
-      <NavLinksMobile links={links} />
     </nav>
   );
 };

@@ -18,7 +18,7 @@ export const NavItem = ({ label, href, colorScheme = 'primary', onClick }: NavIt
       <a
         href={`#${href}`}
         className={cx(
-          'opacity-85 transition-all group-hover:opacity-100',
+          'font-semibold transition-all group-hover:opacity-100',
           colorScheme === 'primary' ? 'text-cta' : 'text-invert'
         )}
       >
