@@ -77,13 +77,14 @@ export const SPACING = {
   sm: '16px',
   xs: '8px',
   xxs: '4px',
+  xxxs: '2px',
   0: '0px'
 };
 
 export const TYPOGRAPHY = {
   title: {
     xxl: ['90px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
-    xl: ['68px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
+    xl: ['50px', { letterSpacing: '-0.03em', lineHeight: '1.2em' }],
     lg: ['38px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }],
     md: ['28px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }],
     sm: ['22px', { letterSpacing: '-0.01em', lineHeight: '1.4em' }],
