@@ -4,6 +4,14 @@ import type { Config } from 'tailwindcss';
  * VARS
  *****************************************/
 
+export const SCREENS = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  '2xl': 1536
+};
+
 export const COLORS = {
   blue: '#639383',
   coral: '#E8998D',
@@ -117,6 +125,9 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
+    screens: Object.fromEntries(
+      Object.keys(SCREENS).map((screen) => [screen, `${SCREENS[screen as keyof typeof SCREENS]}px`])
+    ),
     colors: COLORS,
     backgroundColor: BACKGROUND_COLORS,
     fill: BACKGROUND_COLORS,
