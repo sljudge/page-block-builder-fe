@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, type ReactNode } from 'react';
 import ReactCarousel, { DotProps, type ResponsiveType } from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -31,8 +33,8 @@ export const Carousel = ({ children }: CarouselProps) => {
   return (
     <ReactCarousel
       responsive={responsive}
-      swipeable={true}
-      draggable={true}
+      swipeable={false}
+      draggable={false}
       showDots={true}
       arrows={false}
       ssr={true}

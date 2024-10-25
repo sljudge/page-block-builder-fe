@@ -59,20 +59,76 @@ export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
 /**************************************************************
  *  Page sections
  * ************************************************************/
+
+const BlockImageSchema = z.object({ id: z.number(), directus_files_id: z.string() });
+
+/** Blocks *******************************************************/
+const TextAndImagesBlockSchema = z.object({
+  id: z.number(),
+  collection: z.literal('text_and_images'),
+  item: z.object({
+    id: z.number(),
+    text: z.string(),
+    images: z.array(BlockImageSchema),
+    orientation: z.boolean()
+  })
+});
+export type TextAndImagesBlock = z.infer<typeof TextAndImagesBlockSchema>;
+
+const PageBlockSchema = z.discriminatedUnion('collection', [TextAndImagesBlockSchema]);
+export type PageBlock = z.infer<typeof PageBlockSchema>;
+
+/** Main ********************************************************/
 const PageSectionResponseSchema = z.array(
-  z.object({ id: z.number(), sort: z.number(), label: z.string() })
+  z.object({
+    id: z.number(),
+    sort: z.number(),
+    label: z.string(),
+    blocks: z.array(PageBlockSchema)
+  })
 );
 const PageSectionsSchema = z.array(
-  z.object({ id: z.number(), href: z.string(), label: z.string() })
+  z.object({
+    id: z.number(),
+    href: z.string(),
+    label: z.string(),
+    blocks: z.array(PageBlockSchema)
+  })
 );
 
 export async function getPageSections(): Promise<z.infer<typeof PageSectionsSchema>> {
   try {
-    const response = PageSectionResponseSchema.parse(
-      await directus.request(readItems('page_sections'))
+    const response = await directus.request(
+      readItems('page_sections', {
+        fields: [
+          '*',
+          {
+            blocks: [
+              '*',
+              {
+                item: {
+                  text_and_images: ['*', { '*': ['*'] }]
+                }
+              }
+            ]
+          }
+        ]
+      })
     );
+    console.log('%csrc/services/directus.ts:115 response', 'color: #007acc;', response);
+    console.log(
+      '%csrc/services/directus.ts:72 images',
+      'color: #007acc;',
+      response[0].blocks[0].item
+    );
+    const parsedResonse = PageSectionResponseSchema.parse(response);
     return PageSectionsSchema.parse(
-      response.map(({ id, label }) => ({ id, label, href: toPascalCase(label) }))
+      parsedResonse.map(({ id, label, blocks }) => ({
+        id,
+        label,
+        href: toPascalCase(label),
+        blocks
+      }))
     );
   } catch (error) {
     Console.error('Error fetching page sections: \n' + error);
