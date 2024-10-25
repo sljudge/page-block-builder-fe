@@ -61,6 +61,7 @@ export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
  * ************************************************************/
 
 const BlockImageSchema = z.object({ id: z.number(), directus_files_id: z.string() });
+const ColorSchemeSchema = z.enum(['primary', 'secondary', 'invert']);
 
 /** Blocks *******************************************************/
 const TextAndImagesBlockSchema = z.object({
@@ -70,7 +71,8 @@ const TextAndImagesBlockSchema = z.object({
     id: z.number(),
     text: z.string(),
     images: z.array(BlockImageSchema),
-    orientation: z.boolean()
+    orientation: z.boolean(),
+    color_scheme: ColorSchemeSchema
   })
 });
 export type TextAndImagesBlock = z.infer<typeof TextAndImagesBlockSchema>;

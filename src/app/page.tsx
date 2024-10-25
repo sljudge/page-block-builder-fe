@@ -26,11 +26,7 @@ export default async function App() {
           alignY={hero.align_y}
         />
         {pageSections.map(({ id, blocks, href }) => (
-          <section
-            key={`page-section-${id}`}
-            id={href}
-            className="container mx-auto px-md py-xxl md:px-lg lg:px-xxl"
-          >
+          <section key={`page-section-${id}`} id={href}>
             {blocks.map(({ collection, item }, i) => {
               switch (collection) {
                 case 'text_and_images':
