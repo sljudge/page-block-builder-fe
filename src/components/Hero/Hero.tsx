@@ -32,7 +32,7 @@ export const Hero = ({
       })}
     >
       <div
-        className={cx('container block max-w-[1100px] py-xl', {
+        className={cx('container block py-xl lg:max-w-[1100px]', {
           'bg-primary/90 text-primary': colorScheme === 'primary',
           'bg-secondary/90 text-secondary': colorScheme === 'secondary',
           'bg-invert/90 text-invert': colorScheme === 'invert'
