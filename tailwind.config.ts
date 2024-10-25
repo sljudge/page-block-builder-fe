@@ -9,7 +9,7 @@ export const SCREENS = {
   md: 768,
   lg: 1024,
   xl: 1280,
-  '2xl': 1536
+  xxl: 1536
 };
 
 export const COLORS = {
@@ -118,17 +118,25 @@ export function fromNested<T extends Record<string, any>>(dict: Record<string, T
 /*****************************************
  * CONFIG
  *****************************************/
-
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/blocks/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     screens: Object.fromEntries(
       Object.keys(SCREENS).map((screen) => [screen, `${SCREENS[screen as keyof typeof SCREENS]}px`])
     ),
+    container: {
+      padding: {
+        DEFAULT: SPACING.sm,
+        ...Object.fromEntries(
+          Object.keys(SCREENS).map((screen) => [screen, SPACING[screen as keyof typeof SPACING]])
+        )
+      }
+    },
     colors: COLORS,
     backgroundColor: BACKGROUND_COLORS,
     fill: BACKGROUND_COLORS,
