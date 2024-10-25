@@ -20,7 +20,7 @@ export const TextContent = ({ children }: TextContentProps) => {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: children }}
-      className={cx(headers, text, lists, horizontalRule, links)}
+      className={cx('max-w-[800px]', headers, text, lists, horizontalRule, links)}
     />
   );
 };
