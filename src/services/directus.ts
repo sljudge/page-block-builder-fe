@@ -26,7 +26,7 @@ export async function getCompanyInformation(): Promise<
       logo: `${process.env.ASSETS_URL}/${response.logo}`
     });
   } catch (error) {
-    Console.error('Error fetching logo: \n' + error);
+    Console.error('Error fetching company information: \n' + error);
     throw error;
   }
 }
@@ -51,7 +51,7 @@ export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
       image: `${process.env.ASSETS_URL}/${response.image}`
     });
   } catch (error) {
-    Console.error('Error fetching logo: \n' + error);
+    Console.error('Error fetching hero: \n' + error);
     throw error;
   }
 }
@@ -60,8 +60,8 @@ export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
  *  Page sections
  * ************************************************************/
 
-const BlockImageSchema = z.object({ id: z.number(), directus_files_id: z.string() });
-const ColorSchemeSchema = z.enum(['primary', 'secondary', 'invert']);
+const BlockImageSchema = z.object({ directus_files_id: z.string() });
+const ColorSchemeSchema = z.object({ key: z.enum(['primary', 'secondary', 'invert']) });
 
 /** Blocks *******************************************************/
 const TextAndImagesBlockSchema = z.object({
@@ -72,7 +72,7 @@ const TextAndImagesBlockSchema = z.object({
     text: z.string(),
     images: z.array(BlockImageSchema),
     orientation: z.boolean(),
-    color_scheme: ColorSchemeSchema
+    background_color: ColorSchemeSchema
   })
 });
 export type TextAndImagesBlock = z.infer<typeof TextAndImagesBlockSchema>;
@@ -109,19 +109,16 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
               '*',
               {
                 item: {
-                  text_and_images: ['*', { '*': ['*'] }]
+                  text_and_images: [
+                    '*',
+                    { images: ['directus_files_id'], background_color: ['key'] }
+                  ]
                 }
               }
             ]
           }
         ]
       })
-    );
-    console.log('%csrc/services/directus.ts:115 response', 'color: #007acc;', response);
-    console.log(
-      '%csrc/services/directus.ts:72 images',
-      'color: #007acc;',
-      response[0].blocks[0].item
     );
     const parsedResonse = PageSectionResponseSchema.parse(response);
     return PageSectionsSchema.parse(

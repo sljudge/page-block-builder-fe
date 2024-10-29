@@ -9,11 +9,11 @@ export const TextAndImages = ({
   text,
   images,
   orientation,
-  color_scheme
+  background_color
 }: TextAndImagesBlock['item']) => {
   return (
     <BlockContainer
-      colorScheme={color_scheme}
+      colorScheme={background_color.key}
       className={cx('flex flex-wrap gap-x-lg', orientation === false && 'flex-row-reverse')}
     >
       <div className="w-5/12 flex-1">
