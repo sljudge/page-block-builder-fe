@@ -23,9 +23,9 @@ export const Default: Story = {
       '<p>We use this information to agree suitable agendas. CLIFFORD Solutions look at every aspect of a conference from planning presentations to staging and the use of various media such as DVD, PowerPoint, live TV links and the like.</p>\n' +
       '<div>&nbsp;</div>',
     images: [
-      { id: 2, directus_files_id: 'd46ad029-a8eb-4086-80f6-eb0b2a92c793' },
-      { id: 1, directus_files_id: 'dc3c1ad2-5cd4-4a80-9ec9-554bffefd7e9' },
-      { id: 3, directus_files_id: '5d7d9595-cae4-4376-a0d3-18bf9a201342' }
+      { directus_files_id: 'd46ad029-a8eb-4086-80f6-eb0b2a92c793' },
+      { directus_files_id: 'dc3c1ad2-5cd4-4a80-9ec9-554bffefd7e9' },
+      { directus_files_id: '5d7d9595-cae4-4376-a0d3-18bf9a201342' }
     ]
   }
 };

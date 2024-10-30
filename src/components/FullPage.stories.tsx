@@ -5,7 +5,7 @@ import Hero, { HeroProps, HeroStory } from './Hero';
 import { NavStory } from './Nav';
 
 export default {
-  title: 'Components/FullPage',
+  title: 'FullPage',
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen'

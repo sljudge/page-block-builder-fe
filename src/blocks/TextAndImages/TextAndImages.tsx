@@ -13,7 +13,7 @@ export const TextAndImages = ({
 }: TextAndImagesBlock['item']) => {
   return (
     <BlockContainer
-      colorScheme={background_color.key}
+      colorScheme={background_color?.key ?? 'primary'}
       className={cx('flex flex-wrap gap-x-lg', orientation === false && 'flex-row-reverse')}
     >
       <div className="w-5/12 flex-1">
