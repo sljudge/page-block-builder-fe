@@ -8,6 +8,7 @@ import toPascalCase from '@/utils/toPascalCase';
 const directus = createDirectus(process.env.DIRECTUS_URL!).with(rest());
 
 const ColorSchemeSchema = z.object({ key: z.enum(['primary', 'secondary', 'invert']) });
+export type ColorScheme = z.infer<typeof ColorSchemeSchema>;
 
 /**************************************************************
  *  Company Information
@@ -68,6 +69,8 @@ export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
 const BlockImageSchema = z.object({ directus_files_id: z.string() });
 
 /** Blocks *******************************************************/
+
+// Text and Images
 const TextAndImagesBlockSchema = z.object({
   id: z.number(),
   collection: z.literal('text_and_images'),
@@ -81,6 +84,7 @@ const TextAndImagesBlockSchema = z.object({
 });
 export type TextAndImagesBlock = z.infer<typeof TextAndImagesBlockSchema>;
 
+// Text
 const TextBlockSchema = z.object({
   id: z.number(),
   collection: z.literal('text'),
@@ -92,9 +96,23 @@ const TextBlockSchema = z.object({
 });
 export type TextBlock = z.infer<typeof TextBlockSchema>;
 
+// Icon and text grid
+const IconTextGridBlockSchema = z.object({
+  id: z.number(),
+  collection: z.literal('icon_text_grid'),
+  item: z.object({
+    id: z.number(),
+    num_cols: z.number(),
+    background_color: ColorSchemeSchema,
+    items: z.array(z.object({ icon: z.string(), text: z.string() }))
+  })
+});
+export type IconTextGridBlock = z.infer<typeof IconTextGridBlockSchema>;
+
 const PageBlockSchema = z.discriminatedUnion('collection', [
   TextAndImagesBlockSchema,
-  TextBlockSchema
+  TextBlockSchema,
+  IconTextGridBlockSchema
 ]);
 export type PageBlock = z.infer<typeof PageBlockSchema>;
 
@@ -131,7 +149,8 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
                     '*',
                     { images: ['directus_files_id'], background_color: ['key'] }
                   ],
-                  text: ['*', { background_color: ['key'] }]
+                  text: ['*', { background_color: ['key'] }],
+                  icon_text_grid: ['*', { background_color: ['key'] }]
                 }
               }
             ]
@@ -142,7 +161,7 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
     console.log(
       '%csrc/services/directus.ts:124 response',
       'color: #007acc;',
-      response[1].blocks[0]
+      response[1].blocks[1].item.items[0]
     );
     const parsedResonse = PageSectionResponseSchema.parse(response);
     return PageSectionsSchema.parse(

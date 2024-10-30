@@ -20,7 +20,9 @@ export const IconTextGrid = ({ numCols = 3, items }: IconTextGridProps) => {
     >
       {items.map(({ icon, text }, i) => (
         <div key={`icon-text-grid-${i}`} className="flex flex-col items-center gap-y-sm">
-          <span className="material-icons text-title-xl">{icon}</span>
+          <span className="material-icons material-symbols-outlined max-w-full text-title-xl">
+            {icon}
+          </span>
           <TextContent className="text-center">{text}</TextContent>
         </div>
       ))}

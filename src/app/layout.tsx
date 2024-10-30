@@ -1,5 +1,6 @@
-import 'material-icons/iconfont/material-icons.css';
+import 'material-symbols';
 import type { Metadata } from 'next';
+
 import './globals.css';
 
 export const metadata: Metadata = {

@@ -1,3 +1,4 @@
+import IconTextGridBlock from '@/blocks/IconTextGrid';
 import TextBlock from '@/blocks/Text';
 import TextAndImagesBlock from '@/blocks/TextAndImages';
 import Hero from '@/components/Hero';
@@ -30,12 +31,14 @@ export default async function App() {
         {pageSections.map(({ id, blocks, href }) => (
           <section key={`page-section-${id}`} id={href}>
             {blocks.map(({ collection, item }, i) => {
-              const sectionKey = `page-section-${id}-${i}`;
+              const blockKey = `page-section-${id}-${i}`;
               switch (collection) {
                 case 'text_and_images':
-                  return <TextAndImagesBlock key={sectionKey} {...item} />;
+                  return <TextAndImagesBlock key={blockKey} {...item} />;
                 case 'text':
-                  return <TextBlock key={sectionKey} {...item} />;
+                  return <TextBlock key={blockKey} {...item} />;
+                case 'icon_text_grid':
+                  return <IconTextGridBlock key={blockKey} {...item} />;
                 default:
                   return null;
               }

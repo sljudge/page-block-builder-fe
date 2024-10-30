@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react';
-import 'material-icons/iconfont/material-icons.css';
+import 'material-symbols';
 
 import '../src/app/globals.css';
 
