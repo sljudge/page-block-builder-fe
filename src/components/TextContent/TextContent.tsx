@@ -21,7 +21,7 @@ export const TextContent = ({ children, className }: TextContentProps) => {
     <div
       dangerouslySetInnerHTML={{ __html: children }}
       className={cx(
-        'mx-auto max-w-[800px]',
+        'mx-auto max-w-[900px]',
         headers,
         text,
         lists,
