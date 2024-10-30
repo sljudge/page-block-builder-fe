@@ -1,3 +1,4 @@
+import type { BackgroundColor } from '@/services/directus';
 import cx from '@/utils/cx';
 
 import { ArrowScrollCTA } from './components';
@@ -8,7 +9,7 @@ export type HeroProps = {
   text?: string;
   alignX?: 'left' | 'center' | 'right';
   alignY?: 'top' | 'center' | 'bottom';
-  colorScheme?: 'primary' | 'secondary' | 'invert';
+  colorScheme?: BackgroundColor;
 };
 
 export const Hero = ({
@@ -38,7 +39,7 @@ export const Hero = ({
           'bg-invert/90 text-invert': colorScheme === 'invert'
         })}
       >
-        <h1 className="md:text-title-xxl text-title-xl leading-tight">{header}</h1>
+        <h1 className="text-title-xl leading-tight md:text-title-xxl">{header}</h1>
         {text && (
           <div
             dangerouslySetInnerHTML={{ __html: text }}

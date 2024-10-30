@@ -7,7 +7,9 @@ import toPascalCase from '@/utils/toPascalCase';
 // Initialize the SDK.
 const directus = createDirectus(process.env.DIRECTUS_URL!).with(rest());
 
-const ColorSchemeSchema = z.object({ key: z.enum(['primary', 'secondary', 'invert']) });
+const BackgroundColorSchema = z.enum(['primary', 'secondary', 'invert']);
+export type BackgroundColor = z.infer<typeof BackgroundColorSchema>;
+const ColorSchemeSchema = z.object({ key: BackgroundColorSchema });
 export type ColorScheme = z.infer<typeof ColorSchemeSchema>;
 
 /**************************************************************

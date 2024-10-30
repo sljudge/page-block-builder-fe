@@ -1,10 +1,11 @@
+import type { BackgroundColor } from '@/services/directus';
 import type { ReactNode } from 'react';
 
 import cx from '@/utils/cx';
 
 export type BlockContainerProps = {
   children: ReactNode;
-  colorScheme?: 'primary' | 'secondary' | 'invert';
+  colorScheme?: BackgroundColor;
   className?: string;
 };
 
