@@ -25,6 +25,7 @@ export default async function App() {
           text={hero.text}
           alignX={hero.align_x}
           alignY={hero.align_y}
+          colorScheme={hero.color_scheme.key}
         />
         {pageSections.map(({ id, blocks, href }) => (
           <section key={`page-section-${id}`} id={href}>

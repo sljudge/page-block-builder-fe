@@ -7,6 +7,8 @@ import toPascalCase from '@/utils/toPascalCase';
 // Initialize the SDK.
 const directus = createDirectus(process.env.DIRECTUS_URL!).with(rest());
 
+const ColorSchemeSchema = z.object({ key: z.enum(['primary', 'secondary', 'invert']) });
+
 /**************************************************************
  *  Company Information
  * ************************************************************/
@@ -40,12 +42,16 @@ const HeroResponseSchema = z.object({
   header: z.string(),
   text: z.string(),
   align_x: z.enum(['right', 'left', 'center']),
-  align_y: z.enum(['top', 'bottom', 'center'])
+  align_y: z.enum(['top', 'bottom', 'center']),
+  color_scheme: ColorSchemeSchema
 });
 
 export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
   try {
-    const response = await directus.request(readSingleton('hero'));
+    const response = await directus.request(
+      readSingleton('hero', { fields: ['*', { color_scheme: ['key'] }] })
+    );
+    console.log('%csrc/services/directus.ts:49 response', 'color: #007acc;', response);
     return HeroResponseSchema.parse({
       ...response,
       image: `${process.env.ASSETS_URL}/${response.image}`
@@ -61,7 +67,6 @@ export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
  * ************************************************************/
 
 const BlockImageSchema = z.object({ directus_files_id: z.string() });
-const ColorSchemeSchema = z.object({ key: z.enum(['primary', 'secondary', 'invert']) });
 
 /** Blocks *******************************************************/
 const TextAndImagesBlockSchema = z.object({
