@@ -51,7 +51,6 @@ export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
     const response = await directus.request(
       readSingleton('hero', { fields: ['*', { color_scheme: ['key'] }] })
     );
-    console.log('%csrc/services/directus.ts:49 response', 'color: #007acc;', response);
     return HeroResponseSchema.parse({
       ...response,
       image: `${process.env.ASSETS_URL}/${response.image}`
