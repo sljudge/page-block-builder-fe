@@ -8,7 +8,8 @@ const nextConfig = {
         port: process.env.ASSETS_PORT,
         pathname: process.env.ASSETS_PATH
       }
-    ]
+    ],
+    dangerouslyAllowSVG: true
   }
 };
 
