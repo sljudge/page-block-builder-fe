@@ -77,7 +77,21 @@ const TextAndImagesBlockSchema = z.object({
 });
 export type TextAndImagesBlock = z.infer<typeof TextAndImagesBlockSchema>;
 
-const PageBlockSchema = z.discriminatedUnion('collection', [TextAndImagesBlockSchema]);
+const TextBlockSchema = z.object({
+  id: z.number(),
+  collection: z.literal('text'),
+  item: z.object({
+    id: z.number(),
+    value: z.string(),
+    background_color: ColorSchemeSchema
+  })
+});
+export type TextBlock = z.infer<typeof TextBlockSchema>;
+
+const PageBlockSchema = z.discriminatedUnion('collection', [
+  TextAndImagesBlockSchema,
+  TextBlockSchema
+]);
 export type PageBlock = z.infer<typeof PageBlockSchema>;
 
 /** Main ********************************************************/
@@ -112,13 +126,19 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
                   text_and_images: [
                     '*',
                     { images: ['directus_files_id'], background_color: ['key'] }
-                  ]
+                  ],
+                  text: ['*', { background_color: ['key'] }]
                 }
               }
             ]
           }
         ]
       })
+    );
+    console.log(
+      '%csrc/services/directus.ts:124 response',
+      'color: #007acc;',
+      response[1].blocks[0]
     );
     const parsedResonse = PageSectionResponseSchema.parse(response);
     return PageSectionsSchema.parse(

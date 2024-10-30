@@ -26,8 +26,8 @@ export const Nav = ({ logo, header, links }: NavProps) => {
   return (
     <nav
       className={cx(
-        'fixed left-0 right-0 top-0 z-50 transition-all duration-200',
-        colorScheme === 'primary' ? 'bg-secondary/95' : 'bg-invert/50'
+        'fixed left-0 right-0 top-0 z-50 shadow-md transition-all duration-200',
+        colorScheme === 'primary' ? 'bg-secondary/95' : 'bg-invert/60'
       )}
     >
       <div className="container mx-auto flex h-[66px] items-center justify-between md:pr-0">

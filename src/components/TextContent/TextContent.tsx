@@ -1,6 +1,6 @@
 import cx from '@/utils/cx';
 
-export type TextContentProps = { children: string };
+export type TextContentProps = { children: string; className?: string };
 
 const headers = [
   '[&_h2]:text-title-xl [&_h2]:mb-md',
@@ -16,11 +16,19 @@ const links = '[&_a]:underline [&_a]:text-cta';
 
 const horizontalRule = '[&_hr]:my-lg';
 
-export const TextContent = ({ children }: TextContentProps) => {
+export const TextContent = ({ children, className }: TextContentProps) => {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: children }}
-      className={cx('max-w-[800px]', headers, text, lists, horizontalRule, links)}
+      className={cx(
+        'mx-auto max-w-[800px]',
+        headers,
+        text,
+        lists,
+        horizontalRule,
+        links,
+        className
+      )}
     />
   );
 };

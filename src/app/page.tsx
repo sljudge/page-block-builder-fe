@@ -1,4 +1,5 @@
-import TextAndImages from '@/blocks/TextAndImages';
+import TextBlock from '@/blocks/Text';
+import TextAndImagesBlock from '@/blocks/TextAndImages';
 import Hero from '@/components/Hero';
 import Nav from '@/components/Nav';
 import { getCompanyInformation, getHero, getPageSections } from '@/services/directus';
@@ -28,9 +29,12 @@ export default async function App() {
         {pageSections.map(({ id, blocks, href }) => (
           <section key={`page-section-${id}`} id={href}>
             {blocks.map(({ collection, item }, i) => {
+              const sectionKey = `page-section-${id}-${i}`;
               switch (collection) {
                 case 'text_and_images':
-                  return <TextAndImages key={`page-section-${id}-${i}`} {...item} />;
+                  return <TextAndImagesBlock key={sectionKey} {...item} />;
+                case 'text':
+                  return <TextBlock key={sectionKey} {...item} />;
                 default:
                   return null;
               }
