@@ -106,7 +106,8 @@ const IconTextGridBlockSchema = z.object({
     id: z.number(),
     num_cols: z.number(),
     background_color: ColorSchemeSchema,
-    items: z.array(z.object({ icon: z.string(), text: z.string() }))
+    title: z.string().optional().nullable(),
+    items: z.array(z.object({ icon: z.string().optional(), text: z.string() }))
   })
 });
 export type IconTextGridBlock = z.infer<typeof IconTextGridBlockSchema>;
@@ -161,9 +162,9 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
       })
     );
     console.log(
-      '%csrc/services/directus.ts:124 response',
+      '%csrc/services/directus.ts:164 response',
       'color: #007acc;',
-      response[1].blocks[1].item.items[0]
+      response[2].blocks[0]
     );
     const parsedResonse = PageSectionResponseSchema.parse(response);
     return PageSectionsSchema.parse(

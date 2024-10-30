@@ -1,15 +1,17 @@
 import TextContent from '@/components/TextContent';
+import { BackgroundColor } from '@/services/directus';
 import cx from '@/utils/cx';
 
 export type IconTextGridProps = {
+  items: { icon?: string; text: string }[];
   numCols?: number;
-  items: { icon: string; text: string }[];
+  colorScheme?: BackgroundColor;
 };
 
-export const IconTextGrid = ({ numCols = 3, items }: IconTextGridProps) => {
+export const IconTextGrid = ({ numCols = 3, items, colorScheme }: IconTextGridProps) => {
   return (
     <div
-      className={cx('grid gap-xxl', {
+      className={cx('grid gap-md lg:gap-xl xl:gap-xxl', {
         'grid-cols-1': numCols === 1,
         'grid-cols-1 md:grid-cols-2': numCols === 2,
         'grid-cols-1 md:grid-cols-2 lg:grid-cols-3': numCols === 3,
@@ -19,11 +21,21 @@ export const IconTextGrid = ({ numCols = 3, items }: IconTextGridProps) => {
       })}
     >
       {items.map(({ icon, text }, i) => (
-        <div key={`icon-text-grid-${i}`} className="flex flex-col items-center gap-y-sm">
-          <span className="material-icons material-symbols-outlined max-w-full text-title-xl">
-            {icon}
-          </span>
-          <TextContent className="text-center">{text}</TextContent>
+        <div
+          key={`icon-text-grid-${i}`}
+          className="flex flex-col items-center justify-stretch gap-y-sm"
+        >
+          {icon && (
+            <span className="material-icons material-symbols-outlined max-w-full text-title-xl">
+              {icon}
+            </span>
+          )}
+          <TextContent
+            className="max-w-full flex-1 text-center [&_blockquote]:flex [&_blockquote]:h-full [&_blockquote]:flex-col [&_blockquote]:justify-between"
+            colorScheme={colorScheme}
+          >
+            {text}
+          </TextContent>
         </div>
       ))}
     </div>

@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react';
 
 import { BACKGROUND_COLORS } from '@/../tailwind.config';
-import Logo from '@/app/favicon.ico';
 import genNumInRange from '@/utils/genNumInRange';
 
 import { Nav } from './Nav';
@@ -25,14 +24,14 @@ const PAGE_LINKS = [
 export const Default = ({ withMockSections = true }: { withMockSections?: boolean }) => {
   return (
     <>
-      <Nav header="Clifford Solutions" logo={{ src: Logo, alt: 'Logo' }} links={PAGE_LINKS} />
+      <Nav header="Clifford Solutions" logo={{ src: '', alt: 'Logo' }} links={PAGE_LINKS} />
       {withMockSections && (
         <div>
           {PAGE_LINKS.map(({ label, href }, i) => (
             <div
               key={href}
               id={href}
-              className="py-xxxl text-display-md text-invert"
+              className="text-display-md py-xxxl text-invert"
               style={{
                 height: `${genNumInRange(300, 1000)}px`,
                 backgroundColor: i % 2 === 0 ? BACKGROUND_COLORS.cta : BACKGROUND_COLORS.invert

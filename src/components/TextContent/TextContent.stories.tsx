@@ -48,9 +48,7 @@ export const Default: Story = {
       '</ul>\n' +
       '<blockquote>\n' +
       '<p style="text-align: left;">Block quote</p>\n' +
-      '<div>\n' +
-      '<div>Enim nisi proident dolore laborum fugiat adipisicing pariatur proident nostrud.</div>\n' +
-      '</div>\n' +
+      '<p>Enim nisi proident dolore laborum fugiat adipisicing pariatur proident nostrud.</p>\n' +
       '</blockquote>\n' +
       '<div><hr>\n' +
       '<p>A link to <a href="google.com" target="_blank" rel="noopener">google</a></p>\n' +
