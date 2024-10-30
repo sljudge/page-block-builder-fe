@@ -1,3 +1,4 @@
+import 'material-icons/iconfont/material-icons.css';
 import type { Metadata } from 'next';
 import './globals.css';
 
