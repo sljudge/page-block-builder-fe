@@ -1,6 +1,6 @@
 import cx from '@/utils/cx';
 
-import { BackgroundColor } from '@/types';
+import { BackgroundColor, XAxisAlign, YAxisAlign } from '@/types';
 
 import { ArrowScrollCTA } from './components';
 
@@ -8,8 +8,8 @@ export type HeroProps = {
   imgSrc: string;
   header: string;
   text?: string;
-  alignX?: 'left' | 'center' | 'right';
-  alignY?: 'top' | 'center' | 'bottom';
+  alignX?: XAxisAlign;
+  alignY?: YAxisAlign;
   colorScheme?: BackgroundColor;
 };
 
@@ -17,8 +17,8 @@ export const Hero = ({
   header,
   imgSrc,
   text,
-  alignX = 'right',
-  alignY = 'center',
+  alignX = XAxisAlign.right,
+  alignY = YAxisAlign.center,
   colorScheme = BackgroundColor.primary
 }: HeroProps) => {
   return (

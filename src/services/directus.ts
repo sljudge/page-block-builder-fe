@@ -1,7 +1,7 @@
 import { createDirectus, readItems, readSingleton, rest } from '@directus/sdk';
 import { z } from 'zod';
 
-import { BackgroundColorSchema } from '@/types';
+import { BackgroundColorSchema, XAxisAlignSchema, YAxisAlignSchema } from '@/types';
 import Console from '@/utils/Console';
 import toPascalCase from '@/utils/toPascalCase';
 
@@ -43,8 +43,8 @@ const HeroResponseSchema = z.object({
   image: z.string(),
   header: z.string(),
   text: z.string(),
-  align_x: z.enum(['right', 'left', 'center']),
-  align_y: z.enum(['top', 'bottom', 'center']),
+  align_x: XAxisAlignSchema,
+  align_y: YAxisAlignSchema,
   color_scheme: ColorSchemeSchema
 });
 

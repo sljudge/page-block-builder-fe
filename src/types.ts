@@ -7,3 +7,17 @@ export enum BackgroundColor {
   secondary = 'secondary',
   invert = 'invert'
 }
+
+export const XAxisAlignSchema = z.enum(['left', 'center', 'right']);
+export enum XAxisAlign {
+  left = 'left',
+  center = 'center',
+  right = 'right'
+}
+
+export const YAxisAlignSchema = z.enum(['top', 'center', 'bottom']);
+export enum YAxisAlign {
+  top = 'top',
+  center = 'center',
+  bottom = 'bottom'
+}
