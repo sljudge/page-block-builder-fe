@@ -125,12 +125,26 @@ const TestimonialsBlockSchema = z.object({
 });
 export type TestimonialsBlock = z.infer<typeof TestimonialsBlockSchema>;
 
+// Images  -------------------------------------------------------
+const ImagesBlockSchema = z.object({
+  id: z.number(),
+  collection: z.literal('images'),
+  item: z.object({
+    id: z.number(),
+    title: z.string().optional().nullable(),
+    images: z.array(BlockImageSchema),
+    background_color: ColorSchemeSchema.nullable()
+  })
+});
+export type ImagesBlock = z.infer<typeof ImagesBlockSchema>;
+
 // Union  ------------------------------------------------------------------
 const PageBlockSchema = z.discriminatedUnion('collection', [
   TextAndImagesBlockSchema,
   TextBlockSchema,
   IconTextGridBlockSchema,
-  TestimonialsBlockSchema
+  TestimonialsBlockSchema,
+  ImagesBlockSchema
 ]);
 export type PageBlock = z.infer<typeof PageBlockSchema>;
 
@@ -169,7 +183,8 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
                   ],
                   text: ['*', { background_color: ['key'] }],
                   icon_text_grid: ['*', { background_color: ['key'] }],
-                  testimonials: ['*', { background_color: ['key'] }]
+                  testimonials: ['*', { background_color: ['key'] }],
+                  images: ['*', { images: ['directus_files_id'], background_color: ['key'] }]
                 }
               }
             ]
@@ -180,7 +195,7 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
     console.log(
       '%csrc/services/directus.ts:164 response',
       'color: #007acc;',
-      JSON.stringify(response[2], null, 2)
+      JSON.stringify(response, null, 2)
     );
     const parsedResonse = PageSectionResponseSchema.parse(response);
     return PageSectionsSchema.parse(
