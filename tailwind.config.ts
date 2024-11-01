@@ -18,6 +18,7 @@ export const COLORS = {
   pink: '#FCF1EF',
   white: '#FBF7F4',
   brown: '#3A1F04',
+  darkGrey: '#2F2F2F',
   black: '#111810',
   red: '#C21807',
   orange: '#AA4C02'
@@ -26,7 +27,7 @@ export const COLORS = {
 export const BACKGROUND_COLORS = {
   primary: COLORS.white,
   secondary: COLORS.pink,
-  invert: COLORS.brown,
+  invert: COLORS.darkGrey,
   cta: COLORS.blue,
   highlight: COLORS.orange,
   negative: COLORS.red
@@ -34,7 +35,7 @@ export const BACKGROUND_COLORS = {
 
 export const TEXT_COLORS = {
   primary: COLORS.black,
-  secondary: COLORS.brown,
+  secondary: COLORS.black,
   invert: COLORS.white,
   negative: COLORS.red,
   cta: COLORS.blue,

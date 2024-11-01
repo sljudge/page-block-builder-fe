@@ -13,9 +13,9 @@ const responsive: ResponsiveType = {
   }
 };
 
-export type CarouselProps = { children: ReactNode[] };
+export type CarouselProps = { children: ReactNode[]; withArrows?: boolean };
 
-export const Carousel = ({ children }: CarouselProps) => {
+export const Carousel = ({ children, withArrows = false }: CarouselProps) => {
   const CustomDot = useCallback(({ active, onClick }: Required<DotProps>) => {
     return (
       <button
@@ -36,15 +36,15 @@ export const Carousel = ({ children }: CarouselProps) => {
       swipeable={false}
       draggable={false}
       showDots={true}
-      arrows={false}
+      arrows={withArrows}
       ssr={true}
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={3500}
-      transitionDuration={500}
+      autoPlaySpeed={5000}
+      transitionDuration={750}
       // @ts-expect-error no props
       customDot={<CustomDot />}
-      containerClass="pb-lg"
+      containerClass="pb-lg relative"
     >
       {children}
     </ReactCarousel>

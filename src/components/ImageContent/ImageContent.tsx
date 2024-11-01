@@ -1,17 +1,22 @@
 import Image from 'next/image';
 
-import Carousel from '@components/Carousel';
+import Carousel, { type CarouselProps } from '@components/Carousel';
 
 export type ImageContentProps = {
   images: string[];
   width?: number;
   height?: number;
-};
+} & Pick<CarouselProps, 'withArrows'>;
 
-export const ImageContent = ({ images, width = 1000, height = 1000 }: ImageContentProps) => {
+export const ImageContent = ({
+  images,
+  width = 700,
+  height = 700,
+  withArrows
+}: ImageContentProps) => {
   if (images.length > 1) {
     return (
-      <Carousel>
+      <Carousel withArrows={withArrows}>
         {images.map((imgSrc, i) => (
           <Image key={imgSrc + i} alt="" src={imgSrc} width={width} height={height} />
         ))}

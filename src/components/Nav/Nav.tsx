@@ -34,7 +34,7 @@ export const Nav = ({ logo, header, links }: NavProps) => {
         colorScheme === 'primary' ? 'bg-secondary/95' : 'bg-invert/60'
       )}
     >
-      <div className="container mx-auto flex h-[66px] items-center justify-between md:pr-0">
+      <div className="container mx-auto flex h-[66px] items-center justify-between lg:pr-0">
         <div className="flex items-center gap-x-md">
           <Image src={logo.src} width={40} height={40} alt={logo.alt} />
           {scrollDirection === 'down' && (

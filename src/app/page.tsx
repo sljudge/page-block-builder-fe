@@ -1,4 +1,5 @@
 import IconTextGridBlock from '@/blocks/IconTextGrid';
+import Images from '@/blocks/Images';
 import Testimonials from '@/blocks/Testimonials';
 import TextBlock from '@/blocks/Text';
 import TextAndImagesBlock from '@/blocks/TextAndImages';
@@ -43,6 +44,8 @@ export default async function App() {
                   return <IconTextGridBlock key={blockKey} {...item} />;
                 case 'testimonials':
                   return <Testimonials key={blockKey} {...item} />;
+                case 'images':
+                  return <Images key={blockKey} {...item} />;
                 default:
                   return null;
               }

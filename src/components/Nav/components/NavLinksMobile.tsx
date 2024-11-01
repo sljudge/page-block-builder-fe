@@ -13,7 +13,7 @@ export const NavLinksMobile = ({ links }: Pick<NavProps, 'links'>) => {
   return (
     <>
       <button
-        className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-cta text-invert md:hidden"
+        className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-cta text-invert lg:hidden"
         onClick={() => setSideBarOpen(true)}
       >
         <Bars3Icon height={24} width={24} />
