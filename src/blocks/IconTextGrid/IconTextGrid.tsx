@@ -1,8 +1,8 @@
 import IconTextGridComponent from '@/components/IconTextGrid';
 import { headers } from '@/components/TextContent';
+import BlockContainer from '@/layout/BlockContainer';
 import type { IconTextGridBlock } from '@/services/directus';
 import cx from '@/utils/cx';
-import BlockContainer from '@components/BlockContainer';
 
 export const IconTextGrid = ({
   background_color,

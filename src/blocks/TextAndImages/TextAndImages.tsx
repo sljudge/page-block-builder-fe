@@ -2,8 +2,8 @@ import type { TextAndImagesBlock } from '@/services/directus';
 
 import ImageContent from '@/components/ImageContent';
 import TextContent from '@/components/TextContent';
+import BlockContainer from '@/layout/BlockContainer';
 import cx from '@/utils/cx';
-import BlockContainer from '@components/BlockContainer';
 
 export const TextAndImages = ({
   text,
