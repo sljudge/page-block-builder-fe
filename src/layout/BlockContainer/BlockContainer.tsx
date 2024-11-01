@@ -1,5 +1,6 @@
-import type { BackgroundColor } from '@/services/directus';
 import type { ReactNode } from 'react';
+
+import { BackgroundColor } from '@/types';
 
 import cx from '@/utils/cx';
 

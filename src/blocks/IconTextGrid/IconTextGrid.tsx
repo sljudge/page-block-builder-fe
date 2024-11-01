@@ -11,14 +11,11 @@ export const IconTextGrid = ({
   num_cols,
   title
 }: IconTextGridBlock['item']) => {
+  const colorScheme = (background_color?.key ?? BackgroundColor.primary) as BackgroundColor;
   return (
-    <BlockContainer colorScheme={background_color?.key ?? 'primary'} className={cx(headers)}>
+    <BlockContainer colorScheme={colorScheme} className={cx(headers)}>
       {title && <h2 className="text-center">{title}</h2>}
-      <IconTextGridComponent
-        numCols={num_cols}
-        items={items}
-        colorScheme={(background_color?.key ?? BackgroundColor.primary) as BackgroundColor}
-      />
+      <IconTextGridComponent numCols={num_cols} items={items} colorScheme={colorScheme} />
     </BlockContainer>
   );
 };
