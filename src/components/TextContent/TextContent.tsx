@@ -16,20 +16,21 @@ export const headers = [
   '[&_h5]:text-title-md [&_h5]:mb-xs'
 ];
 
-const text = ['[&_p]:mb-xs'];
+export const text = ['[&_p]:mb-xs'];
 
-const lists = ['[&_ol]:my-md [&_ul]:my-md', '[&_ol]:list-decimal [&_ol]:list-inside'];
+export const lists = ['[&_ol]:my-md [&_ul]:my-md', '[&_ol]:list-decimal [&_ol]:list-inside'];
 
-function links(colorScheme: BackgroundColor) {
+export function links(colorScheme: BackgroundColor) {
   return cx(
     '[&_a]:underline [&_a]:text-cta',
     colorScheme === 'invert' ? '[&_a]:text-invert' : '[&_a]:text-cta'
   );
 }
 
-const horizontalRule = '[&_hr]:my-lg';
+export const horizontalRule = '[&_hr]:my-lg';
 
-const blockquote = '[&_blockquote:after]:text-highlight [&_blockquote:before]:text-highlight';
+export const blockquote =
+  '[&_blockquote:after]:text-highlight [&_blockquote:before]:text-highlight';
 
 export const TextContent = ({
   children,

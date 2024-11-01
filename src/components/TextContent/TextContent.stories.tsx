@@ -11,7 +11,7 @@ export default {
   },
   decorators: [
     (Story) => (
-      <div className="mx-auto p-xl">
+      <div className="container mx-auto p-xl">
         <Story />
       </div>
     )
