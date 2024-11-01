@@ -11,13 +11,14 @@ blockquote::after {
   font-family: 'Material Symbols Outlined';
   content: '\e244';
   font-size: 40px;
-  opacity: 0.6;
+  opacity: 0.2;
   display: inline;
   position: absolute;
 }
 blockquote::before {
   top: 0;
   left: 0;
+  transform: rotate(180deg);
 }
 blockquote::after {
   bottom: 0;

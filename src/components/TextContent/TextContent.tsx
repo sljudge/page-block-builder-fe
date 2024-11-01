@@ -16,7 +16,7 @@ export const headers = [
   '[&_h5]:text-title-md [&_h5]:mb-xs'
 ];
 
-export const text = ['[&_p]:mb-xs'];
+export const text = ['[&_p:not(:last-child)]:mb-xs'];
 
 export const lists = ['[&_ol]:my-md [&_ul]:my-md', '[&_ol]:list-decimal [&_ol]:list-inside'];
 
@@ -28,9 +28,6 @@ export function links(colorScheme: BackgroundColor) {
 }
 
 export const horizontalRule = '[&_hr]:my-lg';
-
-export const blockquote =
-  '[&_blockquote:after]:text-highlight [&_blockquote:before]:text-highlight';
 
 export const TextContent = ({
   children,
@@ -47,7 +44,6 @@ export const TextContent = ({
         lists,
         horizontalRule,
         links(colorScheme),
-        blockquote,
         className
       )}
     />
