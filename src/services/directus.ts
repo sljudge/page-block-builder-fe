@@ -72,7 +72,7 @@ const BlockImageSchema = z.object({ directus_files_id: z.string() });
 
 /** Blocks *******************************************************/
 
-// Text and Images
+// Text and Images  -------------------------------------------------------
 const TextAndImagesBlockSchema = z.object({
   id: z.number(),
   collection: z.literal('text_and_images'),
@@ -81,41 +81,57 @@ const TextAndImagesBlockSchema = z.object({
     text: z.string(),
     images: z.array(BlockImageSchema),
     orientation: z.boolean(),
-    background_color: ColorSchemeSchema
+    background_color: ColorSchemeSchema.nullable()
   })
 });
 export type TextAndImagesBlock = z.infer<typeof TextAndImagesBlockSchema>;
 
-// Text
+// Text ------------------------------------------------------------------
 const TextBlockSchema = z.object({
   id: z.number(),
   collection: z.literal('text'),
   item: z.object({
     id: z.number(),
     value: z.string(),
-    background_color: ColorSchemeSchema
+    background_color: ColorSchemeSchema.nullable()
   })
 });
 export type TextBlock = z.infer<typeof TextBlockSchema>;
 
-// Icon and text grid
+// Icon and text grid  -------------------------------------------------------
 const IconTextGridBlockSchema = z.object({
   id: z.number(),
   collection: z.literal('icon_text_grid'),
   item: z.object({
     id: z.number(),
     num_cols: z.number(),
-    background_color: ColorSchemeSchema,
+    background_color: ColorSchemeSchema.nullable(),
     title: z.string().optional().nullable(),
     items: z.array(z.object({ icon: z.string().optional(), text: z.string() }))
   })
 });
 export type IconTextGridBlock = z.infer<typeof IconTextGridBlockSchema>;
 
+// Testimonials  -------------------------------------------------------
+const TestimonialsBlockSchema = z.object({
+  id: z.number(),
+  collection: z.literal('testimonials'),
+  item: z.object({
+    id: z.number(),
+    num_cols: z.number(),
+    background_color: ColorSchemeSchema.nullable(),
+    title: z.string().optional().nullable(),
+    items: z.array(z.object({ text: z.string(), name: z.string(), company: z.string().optional() }))
+  })
+});
+export type TestimonialsBlock = z.infer<typeof TestimonialsBlockSchema>;
+
+// Union  ------------------------------------------------------------------
 const PageBlockSchema = z.discriminatedUnion('collection', [
   TextAndImagesBlockSchema,
   TextBlockSchema,
-  IconTextGridBlockSchema
+  IconTextGridBlockSchema,
+  TestimonialsBlockSchema
 ]);
 export type PageBlock = z.infer<typeof PageBlockSchema>;
 
@@ -153,7 +169,8 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
                     { images: ['directus_files_id'], background_color: ['key'] }
                   ],
                   text: ['*', { background_color: ['key'] }],
-                  icon_text_grid: ['*', { background_color: ['key'] }]
+                  icon_text_grid: ['*', { background_color: ['key'] }],
+                  testimonials: ['*', { background_color: ['key'] }]
                 }
               }
             ]
@@ -164,7 +181,7 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
     console.log(
       '%csrc/services/directus.ts:164 response',
       'color: #007acc;',
-      response[2].blocks[0]
+      JSON.stringify(response[2], null, 2)
     );
     const parsedResonse = PageSectionResponseSchema.parse(response);
     return PageSectionsSchema.parse(
@@ -176,7 +193,7 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
       }))
     );
   } catch (error) {
-    Console.error('Error fetching page sections: \n' + error);
+    Console.error('Error fetching page sections: \n');
     throw error;
   }
 }
