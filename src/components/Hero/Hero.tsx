@@ -1,5 +1,6 @@
-import type { BackgroundColor } from '@/services/directus';
 import cx from '@/utils/cx';
+
+import { BackgroundColor } from '../types';
 
 import { ArrowScrollCTA } from './components';
 
@@ -18,7 +19,7 @@ export const Hero = ({
   text,
   alignX = 'right',
   alignY = 'center',
-  colorScheme = 'primary'
+  colorScheme = BackgroundColor.primary
 }: HeroProps) => {
   return (
     <div

@@ -1,6 +1,6 @@
 import cx from '@/utils/cx';
 
-import { type BackgroundColor } from '@/services/directus';
+import { BackgroundColor } from '../types';
 
 import './styles.css';
 
@@ -32,7 +32,11 @@ const horizontalRule = '[&_hr]:my-lg';
 
 const blockquote = '[&_blockquote:after]:text-highlight [&_blockquote:before]:text-highlight';
 
-export const TextContent = ({ children, className, colorScheme = 'primary' }: TextContentProps) => {
+export const TextContent = ({
+  children,
+  className,
+  colorScheme = BackgroundColor.primary
+}: TextContentProps) => {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: children }}

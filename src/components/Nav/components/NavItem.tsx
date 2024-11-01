@@ -1,11 +1,17 @@
 import { OUTLINE_WIDTHS } from '@/../tailwind.config';
 import cx from '@/utils/cx';
 
+import { BackgroundColor } from '../../types';
 import type { NavColorScheme, NavLink } from '../Nav';
 
 export type NavItemProps = NavLink & { colorScheme?: NavColorScheme; onClick?: () => void };
 
-export const NavItem = ({ label, href, colorScheme = 'primary', onClick }: NavItemProps) => {
+export const NavItem = ({
+  label,
+  href,
+  colorScheme = BackgroundColor.primary,
+  onClick
+}: NavItemProps) => {
   return (
     <li
       key={`page-nav-item-${href}`}

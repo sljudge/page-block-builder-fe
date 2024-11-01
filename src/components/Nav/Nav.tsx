@@ -5,11 +5,16 @@ import Image, { type ImageProps } from 'next/image';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 import cx from '@/utils/cx';
 
+import type { BackgroundColor } from '../types';
+
 import { NavLinksDesktop, NavLinksMobile } from './components';
 
 export type NavLink = { label: string; href: string };
 
-export type NavColorScheme = 'primary' | 'invert';
+export type NavColorScheme = Extract<
+  BackgroundColor,
+  BackgroundColor.primary | BackgroundColor.invert
+>;
 
 export type NavProps = {
   logo: {
@@ -22,7 +27,7 @@ export type NavProps = {
 
 export const Nav = ({ logo, header, links }: NavProps) => {
   const scrollDirection = useScrollDirection(250);
-  const colorScheme = scrollDirection === 'down' ? 'primary' : 'invert';
+  const colorScheme = (scrollDirection === 'down' ? 'primary' : 'invert') as NavColorScheme;
   return (
     <nav
       className={cx(
