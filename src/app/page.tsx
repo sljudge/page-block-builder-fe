@@ -1,9 +1,11 @@
 import IconTextGridBlock from '@/blocks/IconTextGrid';
+import Testimonials from '@/blocks/Testimonials';
 import TextBlock from '@/blocks/Text';
 import TextAndImagesBlock from '@/blocks/TextAndImages';
 import Hero from '@/components/Hero';
 import Nav from '@/components/Nav';
 import { getCompanyInformation, getHero, getPageSections } from '@/services/directus';
+import { BackgroundColor, XAxisAlign, YAxisAlign } from '@/types';
 
 export default async function App() {
   const hero = await getHero();
@@ -24,9 +26,9 @@ export default async function App() {
           header={hero.header}
           imgSrc={hero.image}
           text={hero.text}
-          alignX={hero.align_x}
-          alignY={hero.align_y}
-          colorScheme={hero.color_scheme.key}
+          alignX={hero.align_x as XAxisAlign}
+          alignY={hero.align_y as YAxisAlign}
+          colorScheme={hero.color_scheme.key as BackgroundColor}
         />
         {pageSections.map(({ id, blocks, href }) => (
           <section key={`page-section-${id}`} id={href}>
@@ -39,6 +41,8 @@ export default async function App() {
                   return <TextBlock key={blockKey} {...item} />;
                 case 'icon_text_grid':
                   return <IconTextGridBlock key={blockKey} {...item} />;
+                case 'testimonials':
+                  return <Testimonials key={blockKey} {...item} />;
                 default:
                   return null;
               }
