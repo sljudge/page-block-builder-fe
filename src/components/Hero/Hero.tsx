@@ -1,6 +1,6 @@
 import cx from '@/utils/cx';
 
-import { BackgroundColor } from '../types';
+import { BackgroundColor } from '@/types';
 
 import { ArrowScrollCTA } from './components';
 

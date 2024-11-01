@@ -1,7 +1,6 @@
 import TextContent from '@/components/TextContent';
 import GridContainer, { type GridContainerProps } from '@/layout/GridContainer';
-
-import { BackgroundColor } from '../types';
+import { BackgroundColor } from '@/types';
 
 export type IconTextGridProps = {
   items: { icon?: string; text: string }[];

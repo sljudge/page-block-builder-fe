@@ -1,6 +1,5 @@
+import { BackgroundColor } from '@/types';
 import cx from '@/utils/cx';
-
-import { BackgroundColor } from '../types';
 
 import './styles.css';
 

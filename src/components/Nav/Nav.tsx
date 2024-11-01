@@ -3,9 +3,8 @@
 import Image, { type ImageProps } from 'next/image';
 
 import { useScrollDirection } from '@/hooks/useScrollDirection';
+import type { BackgroundColor } from '@/types';
 import cx from '@/utils/cx';
-
-import type { BackgroundColor } from '../types';
 
 import { NavLinksDesktop, NavLinksMobile } from './components';
 

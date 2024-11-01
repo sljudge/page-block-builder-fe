@@ -1,14 +1,13 @@
 import { createDirectus, readItems, readSingleton, rest } from '@directus/sdk';
 import { z } from 'zod';
 
+import { BackgroundColorSchema } from '@/types';
 import Console from '@/utils/Console';
 import toPascalCase from '@/utils/toPascalCase';
 
 // Initialize the SDK.
 const directus = createDirectus(process.env.DIRECTUS_URL!).with(rest());
 
-const BackgroundColorSchema = z.enum(['primary', 'secondary', 'invert']);
-export type BackgroundColor = z.infer<typeof BackgroundColorSchema>;
 const ColorSchemeSchema = z.object({ key: BackgroundColorSchema });
 export type ColorScheme = z.infer<typeof ColorSchemeSchema>;
 

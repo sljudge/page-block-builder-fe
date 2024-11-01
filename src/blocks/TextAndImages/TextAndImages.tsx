@@ -3,6 +3,7 @@ import type { TextAndImagesBlock } from '@/services/directus';
 import ImageContent from '@/components/ImageContent';
 import TextContent from '@/components/TextContent';
 import BlockContainer from '@/layout/BlockContainer';
+import { BackgroundColor } from '@/types';
 import cx from '@/utils/cx';
 
 export const TextAndImages = ({
@@ -11,7 +12,7 @@ export const TextAndImages = ({
   orientation,
   background_color
 }: TextAndImagesBlock['item']) => {
-  const colorScheme = background_color?.key ?? 'primary';
+  const colorScheme = (background_color?.key ?? BackgroundColor.primary) as BackgroundColor;
   return (
     <BlockContainer
       colorScheme={colorScheme}
