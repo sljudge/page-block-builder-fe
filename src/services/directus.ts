@@ -1,4 +1,4 @@
-import { createDirectus, readItems, readSingleton, rest } from '@directus/sdk';
+import { createDirectus, readItem, readItems, readSingleton, rest } from '@directus/sdk';
 import { z } from 'zod';
 
 import { BackgroundColorSchema, XAxisAlignSchema, YAxisAlignSchema } from '@/types';
@@ -6,7 +6,7 @@ import Console from '@/utils/Console';
 import toPascalCase from '@/utils/toPascalCase';
 
 // Initialize the SDK.
-const directus = createDirectus(process.env.DIRECTUS_URL!).with(rest());
+export const directus = createDirectus(process.env.DIRECTUS_URL!).with(rest());
 
 const ColorSchemeSchema = z.object({ key: BackgroundColorSchema });
 export type ColorScheme = z.infer<typeof ColorSchemeSchema>;
@@ -149,55 +149,75 @@ const PageBlockSchema = z.discriminatedUnion('collection', [
 export type PageBlock = z.infer<typeof PageBlockSchema>;
 
 /** Main ********************************************************/
-const PageSectionResponseSchema = z.array(
-  z.object({
-    id: z.number(),
-    sort: z.number(),
-    label: z.string(),
-    blocks: z.array(PageBlockSchema)
-  })
-);
-const PageSectionsSchema = z.array(
-  z.object({
-    id: z.number(),
-    href: z.string(),
-    label: z.string(),
-    blocks: z.array(PageBlockSchema)
-  })
-);
+const PAGE_SECTION_QUERY_SHAPE = {
+  fields: [
+    '*',
+    {
+      blocks: [
+        '*',
+        {
+          item: {
+            text_and_images: ['*', { images: ['directus_files_id'], background_color: ['key'] }],
+            text: ['*', { background_color: ['key'] }],
+            icon_text_grid: ['*', { background_color: ['key'] }],
+            testimonials: ['*', { background_color: ['key'] }],
+            images: ['*', { images: ['directus_files_id'], background_color: ['key'] }]
+          }
+        }
+      ]
+    }
+  ]
+};
 
-export async function getPageSections(): Promise<z.infer<typeof PageSectionsSchema>> {
+const PageSectionResponseSchema = z.object({
+  id: z.number(),
+  sort: z.number(),
+  label: z.string(),
+  blocks: z.array(PageBlockSchema)
+});
+
+const PageSectionSchema = z.object({
+  id: z.number(),
+  href: z.string(),
+  label: z.string(),
+  blocks: z.array(PageBlockSchema)
+});
+
+export async function getPageSection(id: number): Promise<z.infer<typeof PageSectionSchema>> {
   try {
     const response = await directus.request(
-      readItems('page_sections', {
-        fields: [
-          '*',
-          {
-            blocks: [
-              '*',
-              {
-                item: {
-                  text_and_images: [
-                    '*',
-                    { images: ['directus_files_id'], background_color: ['key'] }
-                  ],
-                  text: ['*', { background_color: ['key'] }],
-                  icon_text_grid: ['*', { background_color: ['key'] }],
-                  testimonials: ['*', { background_color: ['key'] }],
-                  images: ['*', { images: ['directus_files_id'], background_color: ['key'] }]
-                }
-              }
-            ]
-          }
-        ]
-      })
+      readItem('page_sections', id, PAGE_SECTION_QUERY_SHAPE)
     );
     console.log(
       '%csrc/services/directus.ts:164 response',
       'color: #007acc;',
       JSON.stringify(response, null, 2)
     );
-    const parsedResonse = PageSectionResponseSchema.parse(response);
+    const { label, blocks } = PageSectionResponseSchema.parse(response);
+    return PageSectionSchema.parse({
+      id,
+      label,
+      href: toPascalCase(label),
+      blocks
+    });
+  } catch (error) {
+    Console.error(`Error fetching page section ${id}: \n`);
+    throw error;
+  }
+}
+
+const PageSectionsResponseSchema = z.array(PageSectionResponseSchema);
+const PageSectionsSchema = z.array(PageSectionSchema);
+
+export async function getPageSections(): Promise<z.infer<typeof PageSectionsSchema>> {
+  try {
+    const response = await directus.request(readItems('page_sections', PAGE_SECTION_QUERY_SHAPE));
+    console.log(
+      '%csrc/services/directus.ts:164 response',
+      'color: #007acc;',
+      JSON.stringify(response, null, 2)
+    );
+    const parsedResonse = PageSectionsResponseSchema.parse(response);
     return PageSectionsSchema.parse(
       parsedResonse.map(({ id, label, blocks }) => ({
         id,

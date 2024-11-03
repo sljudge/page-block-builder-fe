@@ -1,8 +1,4 @@
-import IconTextGridBlock from '@/blocks/IconTextGrid';
-import Images from '@/blocks/Images';
-import Testimonials from '@/blocks/Testimonials';
-import TextBlock from '@/blocks/Text';
-import TextAndImagesBlock from '@/blocks/TextAndImages';
+import BlockMap from '@/blocks';
 import Hero from '@/components/Hero';
 import Nav from '@/components/Nav';
 import PageSection from '@/layout/PageSection';
@@ -34,23 +30,7 @@ export default async function App() {
         />
         {pageSections.map(({ id, blocks, href }, i) => (
           <PageSection key={`page-section-${id}`} id={href} zIndex={pageSections.length - i}>
-            {blocks.map(({ collection, item }, i) => {
-              const blockKey = `page-section-${id}-${i}`;
-              switch (collection) {
-                case 'text_and_images':
-                  return <TextAndImagesBlock key={blockKey} {...item} />;
-                case 'text':
-                  return <TextBlock key={blockKey} {...item} />;
-                case 'icon_text_grid':
-                  return <IconTextGridBlock key={blockKey} {...item} />;
-                case 'testimonials':
-                  return <Testimonials key={blockKey} {...item} />;
-                case 'images':
-                  return <Images key={blockKey} {...item} />;
-                default:
-                  return null;
-              }
-            })}
+            <BlockMap sectionKey={id} blocks={blocks} />
           </PageSection>
         ))}
       </main>

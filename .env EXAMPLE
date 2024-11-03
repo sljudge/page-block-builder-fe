@@ -1,3 +1,4 @@
+NEXT_URL="http://127.0.0.1:3000"
 DIRECTUS_URL="http://127.0.0.1:8055"
 
 ASSETS_URL="http://127.0.0.1:8055/assets"
@@ -5,3 +6,5 @@ ASSETS_PROTOCOL='http'
 ASSETS_HOST='127.0.0.1'
 ASSETS_PORT='8055'
 ASSETS_PATH='/assets/**'
+
+DIRECTUS_PREVIEW_SECRET="********"
