@@ -5,6 +5,7 @@ import TextBlock from '@/blocks/Text';
 import TextAndImagesBlock from '@/blocks/TextAndImages';
 import Hero from '@/components/Hero';
 import Nav from '@/components/Nav';
+import PageSection from '@/layout/PageSection';
 import { getCompanyInformation, getHero, getPageSections } from '@/services/directus';
 import { BackgroundColor, XAxisAlign, YAxisAlign } from '@/types';
 
@@ -31,8 +32,8 @@ export default async function App() {
           alignY={hero.align_y as YAxisAlign}
           colorScheme={hero.color_scheme.key as BackgroundColor}
         />
-        {pageSections.map(({ id, blocks, href }) => (
-          <section key={`page-section-${id}`} id={href}>
+        {pageSections.map(({ id, blocks, href }, i) => (
+          <PageSection key={`page-section-${id}`} id={href} zIndex={pageSections.length - i}>
             {blocks.map(({ collection, item }, i) => {
               const blockKey = `page-section-${id}-${i}`;
               switch (collection) {
@@ -50,7 +51,7 @@ export default async function App() {
                   return null;
               }
             })}
-          </section>
+          </PageSection>
         ))}
       </main>
     </>

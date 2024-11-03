@@ -24,14 +24,17 @@ export const Hero = ({
   return (
     <div
       style={{ backgroundImage: `url('${imgSrc}')` }}
-      className={cx('flex h-[100vh] bg-secondary bg-cover bg-center bg-no-repeat py-xl', {
-        'justify-start': alignX === 'left',
-        'justify-center': alignX === 'center',
-        'justify-end': alignX === 'right',
-        'items-start': alignY === 'top',
-        'items-center': alignY === 'center',
-        'items-end': alignY === 'bottom'
-      })}
+      className={cx(
+        'relative z-10 flex h-[100vh] bg-secondary bg-cover bg-center bg-no-repeat py-xl',
+        {
+          'justify-start': alignX === 'left',
+          'justify-center': alignX === 'center',
+          'justify-end': alignX === 'right',
+          'items-start': alignY === 'top',
+          'items-center': alignY === 'center',
+          'items-end': alignY === 'bottom'
+        }
+      )}
     >
       <div
         className={cx('container block py-xl lg:max-w-[1100px]', {
