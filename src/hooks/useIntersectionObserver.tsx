@@ -28,7 +28,7 @@ export function useIntersectionObserver(threshold = 3) {
     return () => {
       if (elem) observer.unobserve(elem);
     };
-  }, [isVisible]);
+  }, [isVisible, threshold]);
 
   return { ref, isVisible };
 }
