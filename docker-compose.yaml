@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  app:
+    build:
+      context: .
+    container_name: clifford-solutions-fe-app
+    command: npm run dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+  storybook:
+    build:
+      context: .
+    container_name: clifford-solutions-fe-storybook
+    command: npm run storybook
+    ports:
+      - '6006:6006'
+    volumes:
+      - .:/app
+      - /app/node_modules
