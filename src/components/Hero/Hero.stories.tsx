@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { BackgroundColor, XAxisAlign, YAxisAlign } from '@/types';
+
 import { Hero } from './Hero';
 
 export default {
@@ -47,9 +49,9 @@ export const Default: Story = {
       <br>
       If you get these right, the event can be a truly memorable one.
     `,
-    alignX: 'right',
-    alignY: 'center',
+    alignX: XAxisAlign.right,
+    alignY: YAxisAlign.center,
     imgSrc: 'https://curatedevents.com/wp-content/uploads/2022/11/Corporate-awards-ceremony.jpg',
-    colorScheme: 'secondary'
+    colorScheme: BackgroundColor.secondary
   }
 };
