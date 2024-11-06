@@ -183,15 +183,13 @@ const PageSectionSchema = z.object({
   blocks: z.array(PageBlockSchema)
 });
 
-export async function getPageSection(id: number): Promise<z.infer<typeof PageSectionSchema>> {
+export async function getPageSection(
+  id: number,
+  version?: string
+): Promise<z.infer<typeof PageSectionSchema>> {
   try {
     const response = await directus.request(
-      readItem('page_sections', id, PAGE_SECTION_QUERY_SHAPE)
-    );
-    console.log(
-      '%csrc/services/directus.ts:164 response',
-      'color: #007acc;',
-      JSON.stringify(response, null, 2)
+      readItem('page_sections', id, { ...PAGE_SECTION_QUERY_SHAPE, version })
     );
     const { label, blocks } = PageSectionResponseSchema.parse(response);
     return PageSectionSchema.parse({
@@ -212,11 +210,6 @@ const PageSectionsSchema = z.array(PageSectionSchema);
 export async function getPageSections(): Promise<z.infer<typeof PageSectionsSchema>> {
   try {
     const response = await directus.request(readItems('page_sections', PAGE_SECTION_QUERY_SHAPE));
-    console.log(
-      '%csrc/services/directus.ts:164 response',
-      'color: #007acc;',
-      JSON.stringify(response, null, 2)
-    );
     const parsedResonse = PageSectionsResponseSchema.parse(response);
     return PageSectionsSchema.parse(
       parsedResonse.map(({ id, label, blocks }) => ({

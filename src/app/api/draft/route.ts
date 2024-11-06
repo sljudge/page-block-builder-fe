@@ -6,6 +6,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const secret = searchParams.get('secret');
   const id = searchParams.get('id');
+  const version = searchParams.get('version');
 
   if (secret !== process.env.DIRECTUS_PREVIEW_SECRET) {
     return new Response('Invalid token', { status: 401 });
@@ -26,7 +27,7 @@ export async function GET(request: Request) {
   return new Response(null, {
     status: 307,
     headers: {
-      Location: `/draft/pageSections/${pageSection.id}`
+      Location: `/draft/pageSections/${pageSection.id}?version=${version}`
     }
   });
 }
