@@ -23,5 +23,4 @@ COPY . .
 EXPOSE 3000
 EXPOSE 6006
 
-# Run dev, as we would via the command line
 CMD [""]

@@ -14,7 +14,7 @@ export default async function PageSectionPreview({ params: { id } }: { params: {
 
   return (
     <PageSection id={id} zIndex={0}>
-      <BlockMap sectionKey={id} blocks={pageSection.blocks} />;
+      <BlockMap sectionKey={id} blocks={pageSection.blocks} />
     </PageSection>
   );
 }
