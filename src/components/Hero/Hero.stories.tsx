@@ -43,11 +43,11 @@ type Story = StoryObj<typeof Hero>;
 export const Default: Story = {
   render: (args) => <Hero {...args} />,
   args: {
-    header: 'Clifford Solutions',
+    header: 'Header',
     text: `
-      We believe there are certain keys to a successful seminar or conference.
+      Sint eiusmod anim excepteur non laboris aute aute eiusmod commodo Lorem aliqua dolor.
       <br>
-      If you get these right, the event can be a truly memorable one.
+      Laboris exercitation irure dolor aute sint laborum deserunt voluptate velit.
     `,
     alignX: XAxisAlign.right,
     alignY: YAxisAlign.center,

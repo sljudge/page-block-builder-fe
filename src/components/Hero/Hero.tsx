@@ -23,6 +23,7 @@ export const Hero = ({
 }: HeroProps) => {
   return (
     <div
+      data-testid="container"
       style={{ backgroundImage: `url('${imgSrc}')` }}
       className={cx(
         'relative z-10 flex h-[100vh] bg-secondary bg-cover bg-center bg-no-repeat py-xl',

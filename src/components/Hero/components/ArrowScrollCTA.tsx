@@ -7,7 +7,11 @@ export const ArrowScrollCTA = () => {
     window.scroll({ top: window.innerHeight });
   };
   return (
-    <button className="rounded-full bg-secondary/90 p-xs" onClick={handleClick}>
+    <button
+      data-testid="arrow-scroll-cta"
+      className="rounded-full bg-secondary/90 p-xs"
+      onClick={handleClick}
+    >
       <ArrowDownIcon className="text-cta" width={32} height={32} />
     </button>
   );
