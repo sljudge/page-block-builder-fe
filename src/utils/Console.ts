@@ -33,4 +33,6 @@ class Console {
   }
 }
 
-export default new Console();
+const Export = new Console();
+
+export default Export;
