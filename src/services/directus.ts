@@ -48,10 +48,10 @@ const HeroResponseSchema = z.object({
   color_scheme: ColorSchemeSchema
 });
 
-export async function getHero(): Promise<z.infer<typeof HeroResponseSchema>> {
+export async function getHero(version?: string): Promise<z.infer<typeof HeroResponseSchema>> {
   try {
     const response = await directus.request(
-      readSingleton('hero', { fields: ['*', { color_scheme: ['key'] }] })
+      readSingleton('hero', { fields: ['*', { color_scheme: ['key'] }], version })
     );
     return HeroResponseSchema.parse({
       ...response,
