@@ -16,10 +16,17 @@ export const IconTextGrid = ({ numCols = 3, items, colorScheme }: IconTextGridPr
           key={`icon-text-grid-${i}`}
           className="flex flex-col items-center justify-stretch gap-y-sm"
         >
-          <span className="material-icons material-symbols-outlined max-w-full text-title-xl">
+          <span
+            data-testid="icon"
+            className="material-icons material-symbols-outlined max-w-full text-title-xl"
+          >
             {icon}
           </span>
-          <TextContent className="max-w-full flex-1 text-center" colorScheme={colorScheme}>
+          <TextContent
+            testId="text"
+            className="max-w-full flex-1 text-center"
+            colorScheme={colorScheme}
+          >
             {text}
           </TextContent>
         </div>

@@ -7,6 +7,7 @@ export type TextContentProps = {
   children: string;
   className?: string;
   colorScheme?: BackgroundColor;
+  testId?: string;
 };
 
 export const headers = [
@@ -32,10 +33,12 @@ export const horizontalRule = '[&_hr]:my-lg';
 export const TextContent = ({
   children,
   className,
-  colorScheme = BackgroundColor.primary
+  colorScheme = BackgroundColor.primary,
+  testId
 }: TextContentProps) => {
   return (
     <div
+      data-testid={testId}
       dangerouslySetInnerHTML={{ __html: children }}
       className={cx(
         'mx-auto max-w-[900px]',
