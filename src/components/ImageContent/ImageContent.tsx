@@ -23,6 +23,15 @@ export const ImageContent = ({
       </Carousel>
     );
   } else {
-    return <Image key={images[0]} alt="" src={images[0]} width={width} height={height} />;
+    return (
+      <Image
+        data-testid="single-image"
+        key={images[0]}
+        alt=""
+        src={images[0]}
+        width={width}
+        height={height}
+      />
+    );
   }
 };
