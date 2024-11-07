@@ -2,6 +2,7 @@
 
 import Image, { type ImageProps } from 'next/image';
 
+import NextJsIcon from '@/assets/nextjs-icon.png';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 import type { BackgroundColor } from '@/types';
 import cx from '@/utils/cx';
@@ -16,7 +17,7 @@ export type NavColorScheme = Extract<
 >;
 
 export type NavProps = {
-  logo: {
+  logo?: {
     src: ImageProps['src'];
     alt: ImageProps['alt'];
   };
@@ -36,7 +37,12 @@ export const Nav = ({ logo, header, links }: NavProps) => {
     >
       <div className="container mx-auto flex h-[66px] items-center justify-between lg:pr-0">
         <div className="flex items-center gap-x-md">
-          <Image src={logo.src} width={40} height={40} alt={logo.alt} />
+          <Image
+            src={logo?.src ?? NextJsIcon}
+            width={40}
+            height={40}
+            alt={logo?.alt ?? 'nav icon'}
+          />
           {scrollDirection === 'down' && (
             <div
               className={cx(

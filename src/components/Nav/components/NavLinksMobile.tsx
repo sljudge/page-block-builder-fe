@@ -13,16 +13,19 @@ export const NavLinksMobile = ({ links }: Pick<NavProps, 'links'>) => {
   return (
     <>
       <button
+        data-testid="mobile-nav-open-cta"
         className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-cta text-invert lg:hidden"
         onClick={() => setSideBarOpen(true)}
       >
         <Bars3Icon height={24} width={24} />
       </button>
       <div
+        data-testid="mobile-nav-overlay"
         className={cx('hidden', sideBarOpen && 'fixed inset-0 z-40 block bg-invert/50')}
         onClick={() => setSideBarOpen(false)}
       />
       <div
+        data-testid="mobile-nav-items-container"
         className={cx(
           'fixed bottom-0 right-0 top-0 z-50 w-0 overflow-hidden bg-primary transition-[width] duration-300',
           sideBarOpen && 'w-[75vw]'
@@ -30,6 +33,7 @@ export const NavLinksMobile = ({ links }: Pick<NavProps, 'links'>) => {
       >
         <div className="flex justify-end py-md pr-lg">
           <button
+            data-testid="mobile-nav-close-cta"
             onClick={() => setSideBarOpen(false)}
             className={cx(
               'text-highlight transition-transform duration-500',

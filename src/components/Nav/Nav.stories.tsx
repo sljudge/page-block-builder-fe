@@ -14,7 +14,7 @@ export default {
   }
 } satisfies Meta<typeof Nav>;
 
-const PAGE_LINKS = [
+export const PAGE_LINKS = [
   { label: 'About us', href: 'aboutUs' },
   { label: 'What we do', href: 'whatWeDo' },
   { label: 'Testimonials', href: 'testimonials' },
@@ -24,7 +24,7 @@ const PAGE_LINKS = [
 export const Default = ({ withMockSections = true }: { withMockSections?: boolean }) => {
   return (
     <>
-      <Nav header="Clifford Solutions" logo={{ src: '', alt: 'Logo' }} links={PAGE_LINKS} />
+      <Nav header="My Company Name" links={PAGE_LINKS} />
       {withMockSections && (
         <div>
           {PAGE_LINKS.map(({ label, href }, i) => (
