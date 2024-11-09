@@ -14,15 +14,13 @@ export type ColorScheme = z.infer<typeof ColorSchemeSchema>;
 /**************************************************************
  *  Company Information
  * ************************************************************/
-const CompanyInformationResponseSchema = z.object({
-  id: z.number(),
+export const CompanyInformationResponseSchema = z.object({
   logo: z.string(),
   name: z.string()
 });
+export type CompanyInformationResponse = z.infer<typeof CompanyInformationResponseSchema>;
 
-export async function getCompanyInformation(): Promise<
-  z.infer<typeof CompanyInformationResponseSchema>
-> {
+export async function getCompanyInformation(): Promise<CompanyInformationResponse> {
   try {
     const response = await directus.request(readSingleton('company_information'));
     return CompanyInformationResponseSchema.parse({

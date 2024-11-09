@@ -10,6 +10,11 @@ const nextConfig = {
       }
     ],
     dangerouslyAllowSVG: true
+  },
+  logging: {
+    fetches: {
+      fullUrl: true
+    }
   }
 };
 
