@@ -9,7 +9,6 @@ export default async function App() {
   const hero = await getHero();
   const pageSections = await getPageSections();
   const companyInfo = await getCompanyInformation();
-
   return (
     <>
       <header>

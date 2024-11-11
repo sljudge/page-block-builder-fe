@@ -15,6 +15,9 @@ const nextConfig = {
     fetches: {
       fullUrl: true
     }
+  },
+  env: {
+    DIRECTUS_URL: process.env.DIRECTUS_URL
   }
 };
 

@@ -225,3 +225,19 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
     throw error;
   }
 }
+
+/**************************************************************
+ *  Fallback
+ * ************************************************************/
+const FallbackResponseSchema = z.object({
+  text: z.string()
+});
+export async function getFallback(): Promise<z.infer<typeof FallbackResponseSchema>> {
+  try {
+    const response = await directus.request(readSingleton('fallback'));
+    return FallbackResponseSchema.parse(response);
+  } catch (error) {
+    Console.error('Error fetching fallback: \n');
+    throw error;
+  }
+}
