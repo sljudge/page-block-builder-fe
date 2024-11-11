@@ -45,6 +45,7 @@ const HeroResponseSchema = z.object({
   align_y: YAxisAlignSchema,
   color_scheme: ColorSchemeSchema
 });
+export type HeroResponse = z.infer<typeof HeroResponseSchema>;
 
 export async function getHero(version?: string): Promise<z.infer<typeof HeroResponseSchema>> {
   try {
@@ -173,6 +174,7 @@ const PageSectionResponseSchema = z.object({
   label: z.string(),
   blocks: z.array(PageBlockSchema)
 });
+export type PageSectionResponse = z.infer<typeof PageSectionResponseSchema>;
 
 const PageSectionSchema = z.object({
   id: z.number(),
@@ -203,6 +205,7 @@ export async function getPageSection(
 }
 
 const PageSectionsResponseSchema = z.array(PageSectionResponseSchema);
+export type PageSectionsResponse = z.infer<typeof PageSectionsResponseSchema>;
 const PageSectionsSchema = z.array(PageSectionSchema);
 
 export async function getPageSections(): Promise<z.infer<typeof PageSectionsSchema>> {
