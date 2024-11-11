@@ -1,4 +1,8 @@
 import { server } from '@/services/mocks/server';
+import { fetch } from 'cross-fetch';
+
+// Need polyfill here to account for directus sdk implementation
+global.fetch = fetch;
 
 // Establish API mocking before all tests.
 beforeAll(() => server.listen());
