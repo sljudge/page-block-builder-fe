@@ -22,7 +22,7 @@ const mockBlock: TextBlock = {
   }
 };
 const mockPageSection: PageSectionResponse = {
-  label: 'Page section',
+  nav_label: 'Page section',
   id: 1,
   sort: 0,
   blocks: [mockBlock]

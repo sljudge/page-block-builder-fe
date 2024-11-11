@@ -171,7 +171,7 @@ const PAGE_SECTION_QUERY_SHAPE = {
 const PageSectionResponseSchema = z.object({
   id: z.number(),
   sort: z.number(),
-  label: z.string(),
+  nav_label: z.string(),
   blocks: z.array(PageBlockSchema)
 });
 export type PageSectionResponse = z.infer<typeof PageSectionResponseSchema>;
@@ -191,11 +191,11 @@ export async function getPageSection(
     const response = await directus.request(
       readItem('page_sections', id, { ...PAGE_SECTION_QUERY_SHAPE, version })
     );
-    const { label, blocks } = PageSectionResponseSchema.parse(response);
+    const { nav_label, blocks } = PageSectionResponseSchema.parse(response);
     return PageSectionSchema.parse({
       id,
-      label,
-      href: toPascalCase(label),
+      label: nav_label,
+      href: toPascalCase(nav_label),
       blocks
     });
   } catch (error) {
@@ -213,10 +213,10 @@ export async function getPageSections(): Promise<z.infer<typeof PageSectionsSche
     const response = await directus.request(readItems('page_sections', PAGE_SECTION_QUERY_SHAPE));
     const parsedResonse = PageSectionsResponseSchema.parse(response);
     return PageSectionsSchema.parse(
-      parsedResonse.map(({ id, label, blocks }) => ({
+      parsedResonse.map(({ id, nav_label, blocks }) => ({
         id,
-        label,
-        href: toPascalCase(label),
+        label: nav_label,
+        href: toPascalCase(nav_label),
         blocks
       }))
     );
