@@ -4,10 +4,14 @@ import type { Metadata } from 'next';
 import { getCompanyInformation } from '@/services/directus';
 import './globals.css';
 
-export const metadata: Metadata = {
-  title: 'Clifford Solutions',
-  description: 'Event planning based in White Parish'
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const companyInfo = await getCompanyInformation();
+
+  return {
+    title: companyInfo.name,
+    description: companyInfo.description
+  };
+}
 
 export default async function RootLayout({
   children

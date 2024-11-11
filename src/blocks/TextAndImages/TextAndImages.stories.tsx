@@ -18,9 +18,9 @@ export const Default: Story = {
   args: {
     text:
       '<h2>About us</h2>\n' +
-      '<p>CLIFFORD Solutions are based in the South although our work takes us the length and breadth of the country.&nbsp;</p>\n' +
-      '<p>We work hard to understand the needs of an audience and will often (with the client&rsquo;s permission) speak to delegates before the conference/seminar/corporate event to ascertain what they expect, need and require from the event.</p>\n' +
-      '<p>We use this information to agree suitable agendas. CLIFFORD Solutions look at every aspect of a conference from planning presentations to staging and the use of various media such as DVD, PowerPoint, live TV links and the like.</p>\n' +
+      '<p>Cillum reprehenderit nostrud sint aliquip laboris.</p>\n' +
+      '<p>Aliqua exercitation consequat pariatur magna ex ullamco.</p>\n' +
+      '<p>Eu aliqua fugiat dolor velit eu occaecat tempor laboris. Irure sit culpa exercitation aliqua minim reprehenderit cupidatat ullamco est.</p>\n' +
       '<div>&nbsp;</div>',
     images: [
       { directus_files_id: 'd46ad029-a8eb-4086-80f6-eb0b2a92c793' },

@@ -16,7 +16,8 @@ export type ColorScheme = z.infer<typeof ColorSchemeSchema>;
  * ************************************************************/
 export const CompanyInformationResponseSchema = z.object({
   logo: z.string(),
-  name: z.string()
+  name: z.string(),
+  description: z.string()
 });
 export type CompanyInformationResponse = z.infer<typeof CompanyInformationResponseSchema>;
 
