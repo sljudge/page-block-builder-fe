@@ -8,7 +8,7 @@ import { ArrowScrollCTA } from './components';
 export type HeroProps = {
   imgSrc: string;
   header: string;
-  text?: string;
+  text?: string | null;
   alignX?: XAxisAlign;
   alignY?: YAxisAlign;
   colorScheme?: BackgroundColor;
