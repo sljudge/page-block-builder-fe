@@ -11,6 +11,10 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    networks:
+      - clifford-solutions-directus_default
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
   storybook:
     build:
       context: .
@@ -21,3 +25,8 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+
+networks:
+  clifford-solutions-directus_default:
+    name: clifford-solutions-directus_default
+    external: true

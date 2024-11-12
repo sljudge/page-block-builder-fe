@@ -36,7 +36,8 @@ export const handlers = [
     return HttpResponse.json({
       data: {
         logo: 'directus-id-string',
-        name: 'My company'
+        name: 'My company',
+        description: 'description of the company'
       } as CompanyInformationResponse
     });
   }),

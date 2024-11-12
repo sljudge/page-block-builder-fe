@@ -1,4 +1,5 @@
 import cx from '@/utils/cx';
+import Image from 'next/image';
 
 import { BackgroundColor, XAxisAlign, YAxisAlign } from '@/types';
 
@@ -24,7 +25,6 @@ export const Hero = ({
   return (
     <div
       data-testid="container"
-      style={{ backgroundImage: `url('${imgSrc}')` }}
       className={cx(
         'relative z-10 flex h-[100vh] bg-secondary bg-cover bg-center bg-no-repeat py-xl',
         {
@@ -37,6 +37,7 @@ export const Hero = ({
         }
       )}
     >
+      <Image src={imgSrc} alt="hero image" className="absolute inset-0 -z-10 object-cover" fill />
       <div
         className={cx('container block w-max min-w-[50%] py-xl lg:max-w-[1100px]', {
           'bg-primary/90 text-primary': colorScheme === 'primary',

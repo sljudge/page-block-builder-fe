@@ -17,7 +17,8 @@ const nextConfig = {
     }
   },
   env: {
-    DIRECTUS_URL: process.env.DIRECTUS_URL
+    DIRECTUS_URL: process.env.DIRECTUS_URL,
+    ASSETS_URL: process.env.ASSETS_URL
   }
 };
 
