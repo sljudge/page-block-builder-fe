@@ -10,15 +10,17 @@ export type ImageContentProps = {
 
 export const ImageContent = ({
   images,
-  width = 700,
-  height = 700,
+  width = 500,
+  height = 500,
   withArrows
 }: ImageContentProps) => {
   if (images.length > 1) {
     return (
       <Carousel withArrows={withArrows}>
         {images.map((imgSrc, i) => (
-          <Image key={imgSrc + i} alt="" src={imgSrc} width={width} height={height} />
+          <div key={imgSrc + i} className="" style={{ width, height }}>
+            <Image alt="" src={imgSrc} fill className="h-auto max-w-full object-cover" />
+          </div>
         ))}
       </Carousel>
     );
