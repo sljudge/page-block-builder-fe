@@ -16,7 +16,10 @@ export const TextAndImages = ({
   return (
     <BlockContainer
       colorScheme={colorScheme}
-      className={cx('flex flex-wrap gap-x-lg', orientation === false && 'flex-row-reverse')}
+      className={cx(
+        'flex flex-wrap gap-x-lg gap-y-md',
+        orientation === false && 'flex-row-reverse'
+      )}
     >
       <div className="w-5/12 flex-1">
         <TextContent colorScheme={colorScheme}>{text}</TextContent>

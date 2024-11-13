@@ -27,8 +27,8 @@ describe('Hero', () => {
 
   it('Renders the background image', () => {
     render(<Hero {...props} />);
-    const container = screen.getByTestId('container');
-    expect(container).toHaveStyle(`background-image: url(${props.imgSrc})`);
+    const backgroundImage = screen.getByAltText('hero image');
+    expect(backgroundImage).toBeVisible();
   });
 
   it('Scrolls down 100vh on arrow click', async () => {

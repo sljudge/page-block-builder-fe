@@ -41,7 +41,7 @@ const HeroResponseSchema = z.object({
   id: z.number(),
   image: z.string(),
   header: z.string(),
-  text: z.string(),
+  text: z.string().optional().nullable(),
   align_x: XAxisAlignSchema,
   align_y: YAxisAlignSchema,
   color_scheme: ColorSchemeSchema
