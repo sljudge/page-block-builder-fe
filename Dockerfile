@@ -1,6 +1,6 @@
 # Dockerfile
 # preferred node version chosen here (LTS = 18.18 as of 10/10/23)
-FROM node:18.18-alpine
+FROM node:23-alpine
 
 # Create the directory on the node image
 # where our Next.js app will live
@@ -14,7 +14,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies in /app
-RUN npm install
+RUN npm ci --verbose
 
 # Copy the rest of our Next.js folder into /app
 COPY . .
