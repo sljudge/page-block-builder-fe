@@ -26,6 +26,7 @@
     "react-dom": "^18",
     "react-multi-carousel": "^2.8.5",
     "tailwind-merge": "^2.5.4",
+    "undici": "^6.21.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

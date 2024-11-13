@@ -1,8 +1,11 @@
 import 'material-symbols';
 import type { Metadata } from 'next';
+import { Agent, setGlobalDispatcher } from 'undici';
 
 import { getCompanyInformation } from '@/services/directus';
 import './globals.css';
+
+setGlobalDispatcher(new Agent({ connect: { timeout: 60_000 } }));
 
 export async function generateMetadata(): Promise<Metadata> {
   const companyInfo = await getCompanyInformation();
