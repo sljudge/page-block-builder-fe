@@ -4,6 +4,15 @@ services:
   app:
     build:
       context: .
+      args:
+        NEXT_URL: 'http://127.0.0.1:3000'
+        DIRECTUS_URL: 'http://host.docker.internal:8055'
+        ASSETS_URL: 'http://host.docker.internal:8055/assets'
+        ASSETS_PROTOCOL: 'http'
+        ASSETS_HOST: 'host.docker.internal'
+        ASSETS_PORT: '8055'
+        ASSETS_PATH: '/assets/**'
+        DIRECTUS_PREVIEW_SECRET: '26Fi^quI9C'
     container_name: page-block-builder-app
     ports:
       - '3000:3000'
@@ -11,15 +20,6 @@ services:
       - clifford-solutions-directus
     extra_hosts:
       - 'host.docker.internal:host-gateway'
-    args:
-      NEXT_URL: 'http://127.0.0.1:3000'
-      DIRECTUS_URL: 'http://host.docker.internal:8055'
-      ASSETS_URL: 'http://host.docker.internal:8055/assets'
-      ASSETS_PROTOCOL: 'http'
-      ASSETS_HOST: 'host.docker.internal'
-      ASSETS_PORT: '8055'
-      ASSETS_PATH: '/assets/**'
-      DIRECTUS_PREVIEW_SECRET: '26Fi^quI9C'
   storybook:
     build:
       context: .
