@@ -4,6 +4,8 @@ import BlockMap from '@/blocks';
 import PageSection from '@/layout/PageSection';
 import { getPageSection } from '@/services/directus';
 
+export const dynamic = 'force-dynamic';
+
 type PageSectionPreviewProps = {
   params: Promise<{ id: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

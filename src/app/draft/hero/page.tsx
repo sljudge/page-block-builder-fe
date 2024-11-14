@@ -4,6 +4,8 @@ import Hero from '@/components/Hero';
 import { getHero } from '@/services/directus';
 import { BackgroundColor, XAxisAlign, YAxisAlign } from '@/types';
 
+export const dynamic = 'force-dynamic';
+
 type HeroPreviewProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
