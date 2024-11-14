@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default async function NotFound() {
+export default function NotFound() {
   return (
     <div className="h-screen w-screen bg-secondary p-xxl">
       <div className="m-auto w-max bg-primary p-xl">
