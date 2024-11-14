@@ -8,6 +8,12 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+# Get args to replace env vars
+ARG DIRECTUS_URL
+ENV DIRECTUS_URL=${DIRECTUS_URL}
+ARG ASSETS_URL
+ENV ASSETS_URL=${ASSETS_URL}
+
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 RUN \

@@ -11,7 +11,7 @@ services:
       - clifford-solutions-directus
     extra_hosts:
       - 'host.docker.internal:host-gateway'
-    environment:
+    args:
       NEXT_URL: 'http://127.0.0.1:3000'
       DIRECTUS_URL: 'http://host.docker.internal:8055'
       ASSETS_URL: 'http://host.docker.internal:8055/assets'
