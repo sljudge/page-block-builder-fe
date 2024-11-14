@@ -22,7 +22,7 @@ export async function GET(request: Request) {
     return new Response('Invalid id', { status: 401 });
   }
 
-  draftMode().enable();
+  (await draftMode()).enable();
 
   return new Response(null, {
     status: 307,

@@ -5,16 +5,18 @@ import PageSection from '@/layout/PageSection';
 import { getPageSection } from '@/services/directus';
 
 type PageSectionPreviewProps = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export default async function PageSectionPreview({
-  params: { id },
+  params,
   searchParams
 }: PageSectionPreviewProps) {
-  const { isEnabled } = draftMode();
-  const pageSection = await getPageSection(Number(id), searchParams.version?.toString());
+  const { id } = await params;
+  const { version } = await searchParams;
+  const { isEnabled } = await draftMode();
+  const pageSection = await getPageSection(Number(id), version?.toString());
 
   if (!isEnabled) {
     return <>Draft mode is not enabled</>;

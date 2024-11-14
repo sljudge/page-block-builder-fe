@@ -16,3 +16,4 @@ dist
 .env.example
 *.toml
 public
+Dockerfile

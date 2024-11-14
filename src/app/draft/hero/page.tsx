@@ -5,12 +5,13 @@ import { getHero } from '@/services/directus';
 import { BackgroundColor, XAxisAlign, YAxisAlign } from '@/types';
 
 type HeroPreviewProps = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export default async function HeroPreview({ searchParams }: HeroPreviewProps) {
-  const { isEnabled } = draftMode();
-  const hero = await getHero(searchParams.version?.toString());
+  const { isEnabled } = await draftMode();
+  const { version } = await searchParams;
+  const hero = await getHero(version?.toString());
 
   if (!isEnabled) {
     return <>Draft mode is not enabled</>;

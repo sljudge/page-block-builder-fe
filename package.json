@@ -20,7 +20,7 @@
     "class-variance-authority": "^0.7.0",
     "cross-fetch": "^4.0.0",
     "material-symbols": "^0.25.3",
-    "next": "14.2.16",
+    "next": "15.0.3",
     "plop": "^4.0.1",
     "react": "^18",
     "react-dom": "^18",

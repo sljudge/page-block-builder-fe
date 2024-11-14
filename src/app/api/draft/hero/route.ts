@@ -17,7 +17,7 @@ export async function GET(request: Request) {
     return new Response('Error fetching hero data', { status: 401 });
   }
 
-  draftMode().enable();
+  (await draftMode()).enable();
 
   return new Response(null, {
     status: 307,

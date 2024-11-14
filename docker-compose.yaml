@@ -4,13 +4,9 @@ services:
   app:
     build:
       context: .
-    container_name: clifford-solutions-fe-app
-    command: npm run build && npm run start
+    container_name: page-block-builder-app
     ports:
       - '3000:3000'
-    volumes:
-      - .:/app
-      - /app/node_modules
     networks:
       - clifford-solutions-directus
     extra_hosts:
@@ -18,13 +14,10 @@ services:
   storybook:
     build:
       context: .
-    container_name: clifford-solutions-storybook
+    container_name: page-block-builder-storybook
     command: npm run storybook
     ports:
       - '6006:6006'
-    volumes:
-      - .:/app
-      - /app/node_modules
 
 networks:
   clifford-solutions-directus:
