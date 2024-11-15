@@ -2,6 +2,7 @@ import type { TextAndImagesBlock } from '@/services/directus';
 
 import ImageContent from '@/components/ImageContent';
 import TextContent from '@/components/TextContent';
+import config from '@/config';
 import BlockContainer from '@/layout/BlockContainer';
 import { BackgroundColor } from '@/types';
 import cx from '@/utils/cx';
@@ -27,7 +28,7 @@ export const TextAndImages = ({
       <div className="w-full lg:w-1/2">
         <ImageContent
           images={images.map(
-            ({ directus_files_id }) => `${process.env.ASSETS_URL}/${directus_files_id}`
+            ({ directus_files_id }) => `${config.ASSETS_URL}/${directus_files_id}`
           )}
         />
       </div>

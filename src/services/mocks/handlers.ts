@@ -1,4 +1,6 @@
+import config from '@/config';
 import { http, HttpResponse } from 'msw';
+
 import type {
   ColorScheme,
   CompanyInformationResponse,
@@ -32,7 +34,7 @@ const mockPageSection: PageSectionResponse = {
  * Handlers
  *******************************************************/
 export const handlers = [
-  http.get(`${process.env.DIRECTUS_URL}/items/company_information`, () => {
+  http.get(`${config.DIRECTUS_URL}/items/company_information`, () => {
     return HttpResponse.json({
       data: {
         logo: 'directus-id-string',
@@ -41,7 +43,7 @@ export const handlers = [
       } as CompanyInformationResponse
     });
   }),
-  http.get(`${process.env.DIRECTUS_URL}/items/hero`, () => {
+  http.get(`${config.DIRECTUS_URL}/items/hero`, () => {
     return HttpResponse.json({
       data: {
         align_x: 'center',
@@ -54,12 +56,12 @@ export const handlers = [
       } as HeroResponse
     });
   }),
-  http.get(`${process.env.DIRECTUS_URL}/items/page_sections/:id`, () => {
+  http.get(`${config.DIRECTUS_URL}/items/page_sections/:id`, () => {
     return HttpResponse.json({
       data: mockPageSection
     });
   }),
-  http.get(`${process.env.DIRECTUS_URL}/items/page_sections`, () => {
+  http.get(`${config.DIRECTUS_URL}/items/page_sections`, () => {
     return HttpResponse.json({
       data: [mockPageSection]
     });

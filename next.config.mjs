@@ -4,10 +4,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: process.env.ASSETS_PROTOCOL,
-        hostname: process.env.ASSETS_HOST,
-        port: process.env.ASSETS_PORT,
-        pathname: process.env.ASSETS_PATH
+        protocol: 'http',
+        hostname: 'host.docker.internal',
+        port: '8055',
+        pathname: '/assets/**'
       }
     ],
     dangerouslyAllowSVG: true
@@ -16,10 +16,6 @@ const nextConfig = {
     fetches: {
       fullUrl: true
     }
-  },
-  env: {
-    DIRECTUS_URL: process.env.DIRECTUS_URL,
-    ASSETS_URL: process.env.ASSETS_URL
   }
 };
 

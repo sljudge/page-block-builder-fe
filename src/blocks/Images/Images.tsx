@@ -1,4 +1,5 @@
 import ImageContent from '@/components/ImageContent';
+import config from '@/config';
 import BlockContainer from '@/layout/BlockContainer';
 import type { ImagesBlock } from '@/services/directus';
 import { BackgroundColor } from '@/types';
@@ -13,9 +14,7 @@ export const Images = ({ background_color, images, title }: ImagesBlock['item'])
       <ImageContent
         width={900}
         withArrows
-        images={images.map(
-          ({ directus_files_id }) => `${process.env.ASSETS_URL}/${directus_files_id}`
-        )}
+        images={images.map(({ directus_files_id }) => `${config.ASSETS_URL}/${directus_files_id}`)}
       />
     </BlockContainer>
   );
