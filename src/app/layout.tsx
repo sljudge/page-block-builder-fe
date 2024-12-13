@@ -5,6 +5,8 @@ import { Agent, setGlobalDispatcher } from 'undici';
 import { getCompanyInformation } from '@/services/directus';
 import './globals.css';
 
+export const dynamic = 'force-dynamic';
+
 setGlobalDispatcher(new Agent({ connect: { timeout: 60_000 } }));
 
 export async function generateMetadata(): Promise<Metadata> {
