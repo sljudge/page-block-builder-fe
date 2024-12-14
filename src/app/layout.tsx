@@ -29,7 +29,12 @@ export default async function RootLayout({
       <head>
         <link rel="icon" href={companyInfo.logo} sizes="any" />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <div className="text-body-xl p-xxl text-center">
+          Site coming soon
+        </div>
+      </body>
+      {/* <body className="antialiased">{children}</body> */}
     </html>
   );
 }
