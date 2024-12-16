@@ -1,5 +1,5 @@
 import { Default as TestimonialsStories } from '@/components/Testimonials/Testimonials.stories';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Testimonials } from './Testimonials';
 
 export default {

@@ -1,6 +1,6 @@
 import IconTextGridComponent from '@/components/IconTextGrid';
 import BlockContainer from '@/layout/BlockContainer';
-import type { IconTextGridBlock } from '@/services/directus';
+import { IconTextGridBlock } from '@/services/directus';
 import { BackgroundColor } from '@/types';
 
 export const IconTextGrid = ({

@@ -1,5 +1,5 @@
 import BlockContainer from '@/layout/BlockContainer';
-import type { TestimonialsBlock } from '@/services/directus';
+import { TestimonialsBlock } from '@/services/directus';
 import { BackgroundColor } from '@/types';
 
 import TestimonialsComponent from '@/components/Testimonials';

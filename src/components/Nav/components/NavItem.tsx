@@ -2,7 +2,7 @@ import { OUTLINE_WIDTHS } from '@/../tailwind.config';
 import { BackgroundColor } from '@/types';
 import cx from '@/utils/cx';
 
-import type { NavColorScheme, NavLink } from '../Nav';
+import { NavColorScheme, NavLink } from '../Nav';
 
 export type NavItemProps = NavLink & { colorScheme?: NavColorScheme; onClick?: () => void };
 

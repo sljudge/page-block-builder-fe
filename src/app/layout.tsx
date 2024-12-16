@@ -1,5 +1,5 @@
 import 'material-symbols';
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import { Agent, setGlobalDispatcher } from 'undici';
 
 import { getCompanyInformation } from '@/services/directus';

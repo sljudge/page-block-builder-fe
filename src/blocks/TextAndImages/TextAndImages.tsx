@@ -1,4 +1,4 @@
-import type { TextAndImagesBlock } from '@/services/directus';
+import { TextAndImagesBlock } from '@/services/directus';
 
 import ImageContent from '@/components/ImageContent';
 import TextContent from '@/components/TextContent';

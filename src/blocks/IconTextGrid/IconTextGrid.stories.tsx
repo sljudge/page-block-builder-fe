@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Default as IconTextGridStory } from '@/components/IconTextGrid/IconTextGrid.stories';
-import type { ColorScheme } from '@/services/directus';
+import { ColorScheme } from '@/services/directus';
 
 import { IconTextGrid } from './IconTextGrid';
 

@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 
-import type {
+import {
   ColorScheme,
   CompanyInformationResponse,
   HeroResponse,

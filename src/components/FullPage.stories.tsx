@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 // import Nav from './Nav';
 import Hero, { HeroProps, HeroStory } from './Hero';

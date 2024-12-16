@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import { Preview } from '@storybook/react';
 import 'material-symbols';
 
 import '../src/app/globals.css';

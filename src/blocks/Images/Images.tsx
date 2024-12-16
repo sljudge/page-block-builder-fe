@@ -1,7 +1,7 @@
 import ImageContent from '@/components/ImageContent';
 
 import BlockContainer from '@/layout/BlockContainer';
-import type { ImagesBlock } from '@/services/directus';
+import { ImagesBlock } from '@/services/directus';
 import { BackgroundColor } from '@/types';
 
 export const Images = ({ background_color, images, title }: ImagesBlock['item']) => {

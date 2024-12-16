@@ -4,7 +4,7 @@ import Image, { type ImageProps } from 'next/image';
 
 import NextJsIcon from '@/assets/nextjs-icon.png';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
-import type { BackgroundColor } from '@/types';
+import { BackgroundColor } from '@/types';
 import cx from '@/utils/cx';
 
 import { NavLinksDesktop, NavLinksMobile } from './components';

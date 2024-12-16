@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Carousel } from './Carousel';
 
 export default {
@@ -27,7 +27,7 @@ export const Default: Story = {
         .map((_, i) => (
           <div
             key={i}
-            className="text-title-xl flex min-h-[400px] items-center justify-center bg-cta text-invert"
+            className="flex min-h-[400px] items-center justify-center bg-cta text-title-xl text-invert"
           >
             {i}
           </div>

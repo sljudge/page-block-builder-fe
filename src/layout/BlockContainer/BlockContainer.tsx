@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { headers } from '@/components/TextContent';
 import { BackgroundColor } from '@/types';

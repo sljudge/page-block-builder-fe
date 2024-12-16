@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 import { BACKGROUND_COLORS } from '@/../tailwind.config';
 import genNumInRange from '@/utils/genNumInRange';
