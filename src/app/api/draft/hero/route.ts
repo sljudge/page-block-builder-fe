@@ -1,4 +1,3 @@
-import config from '@/config';
 import { directus } from '@/services/directus';
 import { readSingleton } from '@directus/sdk';
 import { draftMode } from 'next/headers';
@@ -8,7 +7,7 @@ export async function GET(request: Request) {
   const secret = searchParams.get('secret');
   const version = searchParams.get('version');
 
-  if (secret !== process.envDIRECTUS_PREVIEW_SECRET) {
+  if (secret !== process.env.DIRECTUS_PREVIEW_SECRET) {
     return new Response('Invalid token', { status: 401 });
   }
 

@@ -1,6 +1,5 @@
 import { draftMode } from 'next/headers';
 
-import config from '@/config';
 import { directus } from '@/services/directus';
 import { readItem } from '@directus/sdk';
 
@@ -10,7 +9,7 @@ export async function GET(request: Request) {
   const id = searchParams.get('id');
   const version = searchParams.get('version');
 
-  if (secret !== process.envDIRECTUS_PREVIEW_SECRET) {
+  if (secret !== process.env.DIRECTUS_PREVIEW_SECRET) {
     return new Response('Invalid token', { status: 401 });
   }
 
