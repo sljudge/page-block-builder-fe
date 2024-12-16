@@ -28,7 +28,7 @@ export const TextAndImages = ({
       <div className="w-full lg:w-1/2">
         <ImageContent
           images={images.map(
-            ({ directus_files_id }) => `${config.ASSETS_URL}/${directus_files_id}`
+            ({ directus_files_id }) => `${process.envASSETS_URL}/${directus_files_id}`
           )}
         />
       </div>

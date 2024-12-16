@@ -14,7 +14,7 @@ export const Images = ({ background_color, images, title }: ImagesBlock['item'])
       <ImageContent
         width={900}
         withArrows
-        images={images.map(({ directus_files_id }) => `${config.ASSETS_URL}/${directus_files_id}`)}
+        images={images.map(({ directus_files_id }) => `${process.envASSETS_URL}/${directus_files_id}`)}
       />
     </BlockContainer>
   );

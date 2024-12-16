@@ -7,7 +7,7 @@ import Console from '@/utils/Console';
 import toPascalCase from '@/utils/toPascalCase';
 
 // Initialize the SDK.
-export const directus = createDirectus(config.DIRECTUS_URL!).with(rest());
+export const directus = createDirectus(process.envDIRECTUS_URL!).with(rest());
 
 const ColorSchemeSchema = z.object({ key: BackgroundColorSchema });
 export type ColorScheme = z.infer<typeof ColorSchemeSchema>;
@@ -27,7 +27,7 @@ export async function getCompanyInformation(): Promise<CompanyInformationRespons
     const response = await directus.request(readSingleton('company_information'));
     return CompanyInformationResponseSchema.parse({
       ...response,
-      logo: `${config.ASSETS_URL}/${response.logo}`
+      logo: `${process.envASSETS_URL}/${response.logo}`
     });
   } catch (error) {
     Console.error('Error fetching company information: \n' + error);
@@ -56,7 +56,7 @@ export async function getHero(version?: string): Promise<z.infer<typeof HeroResp
     );
     return HeroResponseSchema.parse({
       ...response,
-      image: `${config.ASSETS_URL}/${response.image}`
+      image: `${process.envASSETS_URL}/${response.image}`
     });
   } catch (error) {
     Console.error('Error fetching hero: \n' + error);

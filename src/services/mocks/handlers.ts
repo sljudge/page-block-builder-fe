@@ -34,7 +34,7 @@ const mockPageSection: PageSectionResponse = {
  * Handlers
  *******************************************************/
 export const handlers = [
-  http.get(`${config.DIRECTUS_URL}/items/company_information`, () => {
+  http.get(`${process.envDIRECTUS_URL}/items/company_information`, () => {
     return HttpResponse.json({
       data: {
         logo: 'directus-id-string',
@@ -43,7 +43,7 @@ export const handlers = [
       } as CompanyInformationResponse
     });
   }),
-  http.get(`${config.DIRECTUS_URL}/items/hero`, () => {
+  http.get(`${process.envDIRECTUS_URL}/items/hero`, () => {
     return HttpResponse.json({
       data: {
         align_x: 'center',
@@ -56,12 +56,12 @@ export const handlers = [
       } as HeroResponse
     });
   }),
-  http.get(`${config.DIRECTUS_URL}/items/page_sections/:id`, () => {
+  http.get(`${process.envDIRECTUS_URL}/items/page_sections/:id`, () => {
     return HttpResponse.json({
       data: mockPageSection
     });
   }),
-  http.get(`${config.DIRECTUS_URL}/items/page_sections`, () => {
+  http.get(`${process.envDIRECTUS_URL}/items/page_sections`, () => {
     return HttpResponse.json({
       data: [mockPageSection]
     });

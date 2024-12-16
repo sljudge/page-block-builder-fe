@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const secret = searchParams.get('secret');
   const version = searchParams.get('version');
 
-  if (secret !== config.DIRECTUS_PREVIEW_SECRET) {
+  if (secret !== process.envDIRECTUS_PREVIEW_SECRET) {
     return new Response('Invalid token', { status: 401 });
   }
 
