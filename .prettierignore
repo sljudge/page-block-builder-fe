@@ -12,8 +12,7 @@ package-lock.json
 *.hbs
 dist
 .env
-.env Mutual
-.env UCITS
+.env EXAMPLE
 .env.local
 .env.example
 *.toml

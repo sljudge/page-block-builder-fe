@@ -15,7 +15,7 @@ export const Images = ({ background_color, images, title }: ImagesBlock['item'])
         width={900}
         withArrows
         images={images.map(
-          ({ directus_files_id }) => `${process.env.ASSETS_URL}/${directus_files_id}`
+          ({ directus_files_id }) => `${process.env.NEXT_PUBLIC_ASSETS_URL}/${directus_files_id}`
         )}
       />
     </BlockContainer>

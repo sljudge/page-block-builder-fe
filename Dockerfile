@@ -9,10 +9,10 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Get args to replace env vars
-ARG DIRECTUS_URL
-ENV DIRECTUS_URL=${DIRECTUS_URL}
-ARG ASSETS_URL
-ENV ASSETS_URL=${ASSETS_URL}
+ARG NEXT_PUBLIC_DIRECTUS_URL
+ENV NEXT_PUBLIC_DIRECTUS_URL=${NEXT_PUBLIC_DIRECTUS_URL}
+ARG NEXT_PUBLIC_ASSETS_URL
+ENV NEXT_PUBLIC_ASSETS_URL=${NEXT_PUBLIC_ASSETS_URL}
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
