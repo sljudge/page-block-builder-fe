@@ -2,14 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'host.docker.internal',
-        port: '8055',
-        pathname: '/assets/**'
-      }
-    ],
+    domains: [process.env.DIRECTUS_URL],
     dangerouslyAllowSVG: true
   },
   logging: {
