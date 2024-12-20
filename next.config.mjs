@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: [process.env.NEXT_PUBLIC_DIRECTUS_URL],
+    domains: [process.env.NEXT_PUBLIC_DOMAIN],
     dangerouslyAllowSVG: true
   },
   logging: {
