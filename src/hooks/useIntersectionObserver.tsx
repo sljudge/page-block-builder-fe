@@ -14,14 +14,14 @@ export function useIntersectionObserver(threshold = 3) {
         entries.forEach((entry) => {
           // get the amount of the screen taken up by the section (to 1dp)
           // we need to subtract the header
-          if (!isVisible) {
-            setIsVisible(Math.round(entry.intersectionRatio * 10) > threshold);
+          if (!isVisible && entry.isIntersecting) {
+            setIsVisible(true);
           }
         });
       },
       {
         rootMargin: '-175px 0px 0px 0px',
-        threshold: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        threshold: threshold / 10
       }
     );
     if (elem) observer.observe(elem);
