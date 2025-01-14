@@ -18,8 +18,13 @@ export const Testimonials = ({ items, numCols = 3 }: TestimonialsProps) => {
           <blockquote className="flex flex-1 items-center text-body-lg md:text-body-xl">
             <TextContent>{text}</TextContent>
           </blockquote>
-          <div className="text-body-md font-semibold md:text-body-lg">{name}</div>
-          <div className="text-body-sm md:text-body-md">{company ?? '\xa0'}</div>
+          {name ||
+            (company && (
+              <>
+                <div className="text-body-md font-semibold md:text-body-lg">{name}</div>
+                <div className="text-body-sm md:text-body-md">{company ?? '\xa0'}</div>
+              </>
+            ))}
         </li>
       ))}
     </GridContainer>

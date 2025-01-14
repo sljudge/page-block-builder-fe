@@ -18,7 +18,7 @@ export const ImageContent = ({
     return (
       <Carousel withArrows={withArrows}>
         {images.map((imgSrc, i) => (
-          <div key={imgSrc + i} className="" style={{ width, height }}>
+          <div key={imgSrc + i} style={{ width, height }}>
             <Image alt="" src={imgSrc} fill className="h-auto max-w-full object-cover" />
           </div>
         ))}
