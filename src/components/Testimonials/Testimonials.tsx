@@ -3,7 +3,7 @@ import GridContainer, { type GridContainerProps } from '@/layout/GridContainer';
 import TextContent from '../TextContent';
 
 export type TestimonialsProps = {
-  items: { text: string; name: string; company?: string }[];
+  items: { text: string; name?: string | null; company?: string | null }[];
   numCols?: GridContainerProps['numCols'];
 };
 
@@ -18,13 +18,12 @@ export const Testimonials = ({ items, numCols = 3 }: TestimonialsProps) => {
           <blockquote className="flex flex-1 items-center text-body-lg md:text-body-xl">
             <TextContent>{text}</TextContent>
           </blockquote>
-          {name ||
-            (company && (
-              <>
-                <div className="text-body-md font-semibold md:text-body-lg">{name}</div>
-                <div className="text-body-sm md:text-body-md">{company ?? '\xa0'}</div>
-              </>
-            ))}
+          {(name || company) && (
+            <>
+              <div className="text-body-md font-semibold md:text-body-lg">{name}</div>
+              <div className="text-body-sm md:text-body-md">{company ?? '\xa0'}</div>
+            </>
+          )}
         </li>
       ))}
     </GridContainer>
