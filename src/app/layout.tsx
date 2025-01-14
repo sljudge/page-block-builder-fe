@@ -27,7 +27,7 @@ export default async function RootLayout({
       <head>
         <link rel="icon" href={companyInfo.logo} sizes="any" />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="bg-primary antialiased">{children}</body>
     </html>
   );
 }

@@ -19,6 +19,7 @@ export const PageSection = ({ children, id, zIndex }: PageSectionProps) => {
       style={{ zIndex }}
       className={cx(
         'relative',
+        'my-xxl',
         'transform transition-all duration-500',
         isVisible ? 'opacity-100' : '-translate-y-md opacity-50'
       )}
