@@ -17,7 +17,7 @@ export const headers = [
   '[&_h5]:text-title-md [&_h5]:mb-xs'
 ];
 
-export const text = ['[&_p:not(:last-child)]:mb-xs'];
+export const text = ['[&_p:not(:last-child)]:mb-xs', 'text-body-lg md:text-body-xl'];
 
 export const lists = ['[&_ol]:my-md [&_ul]:my-md', '[&_ol]:list-decimal [&_ol]:list-inside'];
 
