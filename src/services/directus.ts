@@ -17,7 +17,8 @@ export type ColorScheme = z.infer<typeof ColorSchemeSchema>;
 export const CompanyInformationResponseSchema = z.object({
   logo: z.string(),
   name: z.string(),
-  description: z.string()
+  description: z.string(),
+  privacy_notice: z.string()
 });
 export type CompanyInformationResponse = z.infer<typeof CompanyInformationResponseSchema>;
 
@@ -26,7 +27,8 @@ export async function getCompanyInformation(): Promise<CompanyInformationRespons
     const response = await directus.request(readSingleton('company_information'));
     return CompanyInformationResponseSchema.parse({
       ...response,
-      logo: `${process.env.NEXT_PUBLIC_ASSETS_URL}/${response.logo}`
+      logo: `${process.env.NEXT_PUBLIC_ASSETS_URL}/${response.logo}`,
+      privacy_notice: `${process.env.NEXT_PUBLIC_ASSETS_URL}/${response.privacy_notice}`
     });
   } catch (error) {
     Console.error('Error fetching company information: \n' + error);
@@ -120,7 +122,13 @@ const TestimonialsBlockSchema = z.object({
     num_cols: z.number(),
     background_color: ColorSchemeSchema.nullable(),
     title: z.string().optional().nullable(),
-    items: z.array(z.object({ text: z.string(), name: z.string(), company: z.string().optional() }))
+    items: z.array(
+      z.object({
+        text: z.string(),
+        name: z.string().optional().nullable(),
+        company: z.string().optional().nullable()
+      })
+    )
   })
 });
 export type TestimonialsBlock = z.infer<typeof TestimonialsBlockSchema>;
