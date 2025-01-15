@@ -11,10 +11,10 @@ export type TextContentProps = {
 };
 
 export const headers = [
-  '[&_h2]:text-title-xl [&_h2]:mb-md',
-  '[&_h3]:text-title-lg [&_h3]:mb-sm',
-  '[&_h4]:text-title-md [&_h4]:mb-xs',
-  '[&_h5]:text-title-md [&_h5]:mb-xs'
+  '[&_h2]:text-title-lg md:[&_h2]:text-title-xl [&_h2]:mb-md',
+  '[&_h3]:text-title-md md:[&_h3]:text-title-lg [&_h3]:mb-sm',
+  '[&_h4]:text-title-sm md:[&_h4]:text-title-md [&_h4]:mb-xs',
+  '[&_h5]:text-title-xs md:[&_h5]:text-title-sm [&_h5]:mb-xs'
 ];
 
 export const text = ['[&_p:not(:last-child)]:mb-xs', 'text-body-lg md:text-body-xl'];
