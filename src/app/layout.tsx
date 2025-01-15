@@ -29,7 +29,7 @@ export default async function RootLayout({
       </head>
       <body className="bg-primary antialiased">
         {children}
-        <footer className="-mt-xxl bg-invert py-xs text-invert">
+        <footer className="bg-invert py-xs text-invert">
           <div className="container mx-auto flex justify-end">
             <div className="flex items-center gap-x-xs">
               <span
