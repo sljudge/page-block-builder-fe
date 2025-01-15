@@ -15,8 +15,7 @@ export const BlockContainer = ({ children, colorScheme, className }: BlockContai
   return (
     <div
       className={cx(
-        'py-lg',
-        'shadow-md',
+        'py-lg first-of-type:pt-xl md:py-xl md:first-of-type:pt-xxl',
         {
           'bg-primary text-primary': colorScheme === 'primary',
           'bg-secondary text-secondary': colorScheme === 'secondary',
