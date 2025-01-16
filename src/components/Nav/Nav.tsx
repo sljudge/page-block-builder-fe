@@ -21,11 +21,10 @@ export type NavProps = {
     src: ImageProps['src'];
     alt: ImageProps['alt'];
   };
-  header: string;
   links: NavLink[];
 };
 
-export const Nav = ({ logo, header, links }: NavProps) => {
+export const Nav = ({ logo, links }: NavProps) => {
   const scrollDirection = useScrollDirection(250);
   const colorScheme = (scrollDirection === 'down' ? 'primary' : 'invert') as NavColorScheme;
   return (
@@ -39,20 +38,10 @@ export const Nav = ({ logo, header, links }: NavProps) => {
         <div className="flex items-center gap-x-md">
           <Image
             src={logo?.src ?? NextJsIcon}
-            width={40}
-            height={40}
+            width={75}
+            height={75}
             alt={logo?.alt ?? 'nav icon'}
           />
-          {scrollDirection === 'down' && (
-            <div
-              className={cx(
-                'w-max whitespace-nowrap text-title-sm',
-                colorScheme === 'primary' ? 'text-primary' : 'text-invert'
-              )}
-            >
-              {header}
-            </div>
-          )}
         </div>
         <NavLinksDesktop links={links} colorScheme={colorScheme} />
         <NavLinksMobile links={links} />

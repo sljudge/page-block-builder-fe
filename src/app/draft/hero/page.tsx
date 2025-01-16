@@ -22,6 +22,7 @@ export default async function HeroPreview({ searchParams }: HeroPreviewProps) {
   return (
     <Hero
       header={hero.header}
+      headerImg={hero.header_image}
       imgSrc={hero.image}
       text={hero.text}
       alignX={hero.align_x as XAxisAlign}

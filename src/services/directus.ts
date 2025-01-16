@@ -42,7 +42,8 @@ export async function getCompanyInformation(): Promise<CompanyInformationRespons
 const HeroResponseSchema = z.object({
   id: z.number(),
   image: z.string(),
-  header: z.string(),
+  header: z.string().optional().nullable(),
+  header_image: z.string().optional().nullable(),
   text: z.string().optional().nullable(),
   align_x: XAxisAlignSchema,
   align_y: YAxisAlignSchema,
@@ -55,9 +56,11 @@ export async function getHero(version?: string): Promise<z.infer<typeof HeroResp
     const response = await directus.request(
       readSingleton('hero', { fields: ['*', { color_scheme: ['key'] }], version })
     );
+    const { image, header_image, ...heroData } = response;
     return HeroResponseSchema.parse({
-      ...response,
-      image: `${process.env.NEXT_PUBLIC_ASSETS_URL}/${response.image}`
+      ...heroData,
+      image: `${process.env.NEXT_PUBLIC_ASSETS_URL}/${image}`,
+      header_image: header_image ? `${process.env.NEXT_PUBLIC_ASSETS_URL}/${header_image}` : null
     });
   } catch (error) {
     Console.error('Error fetching hero: \n' + error);

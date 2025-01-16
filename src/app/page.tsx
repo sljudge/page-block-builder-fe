@@ -12,15 +12,12 @@ export default async function App() {
   return (
     <>
       <header>
-        <Nav
-          header={companyInfo.name}
-          logo={{ src: companyInfo.logo, alt: companyInfo.name }}
-          links={pageSections}
-        />
+        <Nav logo={{ src: companyInfo.logo, alt: companyInfo.name }} links={pageSections} />
       </header>
       <main>
         <Hero
           header={hero.header}
+          headerImg={hero.header_image}
           imgSrc={hero.image}
           text={hero.text}
           alignX={hero.align_x as XAxisAlign}
