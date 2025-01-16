@@ -24,7 +24,7 @@ export const PAGE_LINKS = [
 export const Default = ({ withMockSections = true }: { withMockSections?: boolean }) => {
   return (
     <>
-      <Nav header="My Company Name" links={PAGE_LINKS} />
+      <Nav links={PAGE_LINKS} />
       {withMockSections && (
         <div>
           {PAGE_LINKS.map(({ label, href }, i) => (
