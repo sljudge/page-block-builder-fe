@@ -14,7 +14,7 @@ describe('Hero', () => {
   it('Renders the heading', () => {
     render(<Hero {...props} />);
     const heading = screen.getByRole('heading', {
-      name: props.header
+      name: props.header ?? ''
     });
     expect(heading).toBeInTheDocument();
   });
